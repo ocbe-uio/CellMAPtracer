@@ -17,8 +17,12 @@ function [MultiTiffMatrix, tiffinfo] = loadmultitif(FullFileName)
 % HISTORY:
 % 2016-10-11 Kamil Antos base on:
 % https://blogs.mathworks.com/steve/2009/04/02/matlab-r2009a-imread-and-multipage-tiffs/
+try
+    tiffinfo = imfinfo(FullFileName);
+catch
+    errordlg(sprintf('Program can not open file %s', FullFileName), getVer)
+end
 
-tiffinfo = imfinfo(FullFileName);
 num_images = numel(tiffinfo);
 width = unique(cat(1, tiffinfo.Width));
 hight = unique(cat(1, tiffinfo.Height));
@@ -33,7 +37,7 @@ switch  tiffinfo(1).BitDepth
     MultiTiffMatrix = zeros(hight,width, num_images);
 end
 catch me
-  fprintf('%s >> %s', mfilename, me.identifier);
+  errordlg(fprintf('%s >> %s', mfilename, me.identifier));
 end
 
 % Load multitiff
