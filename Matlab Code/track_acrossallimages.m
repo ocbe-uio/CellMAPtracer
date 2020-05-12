@@ -69,6 +69,7 @@ addlistener(gui_h.const_togglebutton,     'Value','PostSet', @const_play);
 %% Show first image:
 rectangleBox           = getrectangle(getPrevImg, getPrevPos,RECTANGLE_SIZE_PXL);
 [RectXdata, RectYdata] = rectangle2xydata(rectangleBox);
+figure(gui_h.figure1)
 [s1H,s2H,s3H]          = showfirstimage();  
 updGuiAccordToImageCounter()
 
