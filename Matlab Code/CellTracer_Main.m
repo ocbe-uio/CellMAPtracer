@@ -200,6 +200,7 @@ CalculationResults = [];
     Data2Table.AverageSpeed = round( Data2Table.AverageSpeed,1 );
     
     set(gui_h.calculation_results_uitable, 'Data', table2cell(Data2Table));
+    set(gui_h.calculation_results_uitable, 'ButtonDownFcn', @showdisplacementexplanation)
     set(gui_h.calculation_results_uitable,'ColumnName',VarList);
     set(gui_h.calculation_results_uitable, 'RowName',...
       CalculationResults{:,'CellName'});
@@ -207,6 +208,12 @@ CalculationResults = [];
     c = CalculationResults.Properties.VariableDescriptions(VarList);
     set(gui_h.result_table_description_text, 'String',[c{:}])
   end
+
+% ..showdisplacementexplanation
+    function showdisplacementexplanation(varargin)
+        figure('MenuBar', 'none','ToolBar', 'none');
+        imshow('displacement.jpeg')
+    end
 
 % ..reset_ID_Order
   function reset_ID_Order(~,~)
