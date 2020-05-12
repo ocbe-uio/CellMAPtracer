@@ -207,6 +207,7 @@ CalculationResults = [];
     
     c = CalculationResults.Properties.VariableDescriptions(VarList);
     set(gui_h.result_table_description_text, 'String',[c{:}])
+    set(gui_h.right_click_explanation_text, 'Visible', 'on')
   end
 
 % ..showdisplacementexplanation
