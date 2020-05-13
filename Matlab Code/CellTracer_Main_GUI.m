@@ -22,7 +22,7 @@ function varargout = CellTracer_Main_GUI(varargin)
 
 % Edit the above text to modify the response to help CellTracer_Main_GUI
 
-% Last Modified by GUIDE v2.5 25-Jan-2020 22:31:15
+% Last Modified by GUIDE v2.5 13-May-2020 12:51:27
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -401,5 +401,12 @@ function menu_plot_all_on_new_figure_Callback(hObject, eventdata, handles)
 % --- Executes on button press in inspect_track_pushbutton.
 function inspect_track_pushbutton_Callback(hObject, eventdata, handles)
 % hObject    handle to inspect_track_pushbutton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function menu_colorskins_Callback(hObject, eventdata, handles)
+% hObject    handle to menu_colorskins (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
