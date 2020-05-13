@@ -159,7 +159,8 @@ CalculationResults = [];
     if ~isempty(initialPos)
       hold on, plot(initialPos(:,1), initialPos(:,2), 'or'); hold off
     end
-    title(AllTracks.getTiffFileName(),'Interpreter','none');
+    title(AllTracks.getTiffFileName(),'Interpreter','none', 'FontSize', 10,...
+        'FontWeight', 'bold');
     if AllTracks.NumTracks > 0, analyzetracks(), end
     set(gui_h.track_single_cell_pushbutton, 'Enable', 'on')
   end
