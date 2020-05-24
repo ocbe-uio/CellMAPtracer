@@ -22,7 +22,7 @@ function varargout = CellTracer_Main_GUI(varargin)
 
 % Edit the above text to modify the response to help CellTracer_Main_GUI
 
-% Last Modified by GUIDE v2.5 13-May-2020 12:51:27
+% Last Modified by GUIDE v2.5 24-May-2020 18:36:07
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -408,5 +408,12 @@ function inspect_track_pushbutton_Callback(hObject, eventdata, handles)
 % --------------------------------------------------------------------
 function menu_colorskins_Callback(hObject, eventdata, handles)
 % hObject    handle to menu_colorskins (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in table_description_pushbutton.
+function table_description_pushbutton_Callback(hObject, eventdata, handles)
+% hObject    handle to table_description_pushbutton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)

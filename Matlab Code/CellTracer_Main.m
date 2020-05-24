@@ -208,14 +208,18 @@ CalculationResults = [];
       CalculationResults{:,'CellName'});
     
     c = CalculationResults.Properties.VariableDescriptions(VarList);
-    set(gui_h.result_table_description_text, 'String',[c{:}])
+%     set(gui_h.result_table_description_text, 'String',[c{:}])
+    set(gui_h.table_description_pushbutton, 'Visible','on')
     set(gui_h.right_click_explanation_text, 'Visible', 'on')
   end
 
 % ..showdisplacementexplanation
     function showdisplacementexplanation(varargin)
-        figure('MenuBar', 'none','ToolBar', 'none');
+        fig = figure('MenuBar', 'none','ToolBar', 'none',...
+          'Visible', 'off', 'Name', 'displacement');
         imshow('displacement.jpeg')
+        
+        set(fig, 'Visible', 'on')
     end
 
 % ..reset_ID_Order
