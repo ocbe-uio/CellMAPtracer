@@ -9,6 +9,7 @@ updateguicolors(gui_h)
 
 set(gui_h.inspect_track_pushbutton,     'Callback', @inspecttrack)
 % Note: exporting only XY position: (not used in current version)
+set(gui_h.table_description_pushbutton, 'Callback', @showresulttabledescription)
 set(gui_h.export_result_struct_popupmenu, 'Callback', @exportresults)
 set(gui_h.exp_name_edit,                'Callback', @updexperimentname)
 set(gui_h.menu_reset_cellsID,           'Callback', @reset_ID_Order) % Reset All names
@@ -207,15 +208,26 @@ CalculationResults = [];
     set(gui_h.calculation_results_uitable, 'RowName',...
       CalculationResults{:,'CellName'});
     
-    c = CalculationResults.Properties.VariableDescriptions(VarList);
-    set(gui_h.result_table_description_text, 'String',[c{:}])
+%      c = CalculationResults.Properties.VariableDescriptions(VarList);
+%     set(gui_h.result_table_description_text, 'String',[c{:}])
+    set(gui_h.table_description_pushbutton, 'Visible','on')
     set(gui_h.right_click_explanation_text, 'Visible', 'on')
+  end
+
+% ..showresulttabledescription
+  function showresulttabledescription(varargin)
+    helpHandle =...
+      helpdlg(CalculationResults.Properties.VariableDescriptions(4:end),...
+      'Cell Track Analysis Table Description');
+    set(helpHandle, 'WindowStyle', 'modal');
   end
 
 % ..showdisplacementexplanation
     function showdisplacementexplanation(varargin)
-        figure('MenuBar', 'none','ToolBar', 'none');
+        fig = figure('MenuBar', 'none','ToolBar', 'none',...
+          'Visible', 'off', 'Name', 'displacement');
         imshow('displacement.jpeg')
+        set(fig, 'Visible', 'on')
     end
 
 % ..reset_ID_Order
