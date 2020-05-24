@@ -23,8 +23,9 @@ set(gui_h.text7,    'BackgroundColor',  backgroundColor)
 set(gui_h.uipanel1, 'BackgroundColor',                      backgroundColor)
 set(gui_h.text5,    'BackgroundColor',                      backgroundColor) % 1pixel
 set(gui_h.text6,    'BackgroundColor',                      backgroundColor)
-set(gui_h.result_table_description_text, 'BackgroundColor', backgroundColor)
-set(gui_h.right_click_explanation_text,  'BackgroundColor', backgroundColor)
+% set(gui_h.result_table_description_text, 'BackgroundColor', backgroundColor)
+set(gui_h.table_description_pushbutton, 'BackgroundColor', lightGreen)
+set(gui_h.right_click_explanation_text, 'BackgroundColor', backgroundColor)
 
 % %% Experiment name
 % set(gui_h.exp_name_edit, 'BackgroundColor', ExperimentNameBackground)
