@@ -15,7 +15,8 @@ if nargin < 2, initialPos = []; end
 
 screenSize = get(0,'screensize');
 fig = figure('Name', getVer(),'Toolbar', 'none','MenuBar', 'none',...
-  'Position', [screenSize(1:2) + 100, screenSize(3:4)/2]);
+  'Position', [screenSize(1:2) + 100, screenSize(3:4)/2],...
+  'Color', [1 1 1]);
 imagesc(img); hold on
 
 if ~isempty(initialPos), plot(initialPos(:,1), initialPos(:,2), 'or'); end
