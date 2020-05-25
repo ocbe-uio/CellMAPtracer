@@ -74,7 +74,7 @@ figure(gui_h.figure1)
 updGuiAccordToImageCounter()
 
 %% Create first cell toggle button:
-ActiveBottonName = createToggleButton([.05 .75 .9 .2], CellTrackName);
+ActiveBottonName = createToggleButton([.05 .65 .9 .2], CellTrackName);
 AllCellsPos.(ActiveBottonName) = Cell_XYpos;
 switchactivetogglebutton(gui_h.buttons.(ActiveBottonName));
 
@@ -92,7 +92,9 @@ delete(gui_h.figure1)
 % -------------------------------------------------
   function StringIN = createToggleButton(pos, StringIN)
     gui_h.buttons.(StringIN) = uicontrol('Parent',gui_h.CellDivisionPanel,...
-      'Style','togglebutton', 'String',StringIN,  'Units','Normalized',...
+      'Style','togglebutton', 'String',StringIN,...
+    'FontSize', 12, 'FontWeight', 'bold',...  
+    'Units','Normalized',...
       'Position',pos, 'Callback', @switchactivetogglebutton);
     AllCellsText.(StringIN) = text(0,0, StringIN,...
       'PickableParts', 'none', 'Interpreter', 'none', 'Color', 'r', 'FontWeight', 'bold');
@@ -159,7 +161,9 @@ delete(gui_h.figure1)
       set(gui_h.buttons.(AllButtonNames{i}), 'Value', 0)
       set(gui_h.buttons.(AllButtonNames{i}), 'BackgroundColor', [.94 .94 .94])
     end
-    set(clickedButton, 'BackgroundColor', [.6 1 .6]);
+%     set(clickedButton, 'BackgroundColor', [.6 1 .6]);
+      set(clickedButton, 'BackgroundColor',...
+        gui_h.CurrentTrackCellColorIndicator.BackgroundColor);
   end
 
   function divideCell(~,~)
@@ -167,6 +171,11 @@ delete(gui_h.figure1)
     % Cell cannot divides in first image, probably user clicked by mistake,
     % I do not show any warrning here. 
     if ImageCount == 1, return, end
+    % When user clicks divide cell twice it shouldn't be possible divide
+    % cell which only one position:
+    if ImageCount > 1
+      if isnan(Cell_XYpos(ImageCount-1)), return, end
+    end
     ActiveBotton = gui_h.buttons.(ActiveBottonName);
     LastPosBeforeDivision = getCurrPos();
     % Clear everything after division: this happen when user come back using
@@ -426,8 +435,12 @@ delete(gui_h.figure1)
     set(s3H.CurrCircleHandle, 'YData', CurrPOS(2))
     set(s3H.TitleHandle, 'String', getS3Title)
 
-    set(gui_h.RectText, 'String', sprintf('Rectangle size: %i',...
+%     set(gui_h.RectText, 'String', sprintf('Rectangle size: %i',...
+%       round(gui_h.rectangle_size_slider.Value)))
+
+    set(gui_h.rectanglesizepanel, 'Title', sprintf('Rectangle size: %i',...
       round(gui_h.rectangle_size_slider.Value)))
+
     set(gui_h.progress_slider, 'Value', ImageCount)
     
     % Plot Name of cell on the last subplot:
