@@ -426,8 +426,12 @@ delete(gui_h.figure1)
     set(s3H.CurrCircleHandle, 'YData', CurrPOS(2))
     set(s3H.TitleHandle, 'String', getS3Title)
 
-    set(gui_h.RectText, 'String', sprintf('Rectangle size: %i',...
+%     set(gui_h.RectText, 'String', sprintf('Rectangle size: %i',...
+%       round(gui_h.rectangle_size_slider.Value)))
+
+    set(gui_h.rectanglesizepanel, 'Title', sprintf('Rectangle size: %i',...
       round(gui_h.rectangle_size_slider.Value)))
+
     set(gui_h.progress_slider, 'Value', ImageCount)
     
     % Plot Name of cell on the last subplot:
