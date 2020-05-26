@@ -7,8 +7,10 @@ function CellTracer_Main()
 gui_h = guidata(CellTracer_Main_GUI);
 updateguicolors(gui_h)
 
+
 set(gui_h.inspect_track_pushbutton,     'Callback', @inspecttrack)
 % Note: exporting only XY position: (not used in current version)
+set(gui_h.Calculations_explanation_pushbutton, 'Callback', @showdisplacementexplanation)
 set(gui_h.table_description_pushbutton, 'Callback', @showresulttabledescription)
 set(gui_h.export_result_struct_popupmenu, 'Callback', @exportresults)
 set(gui_h.exp_name_edit,                'Callback', @updexperimentname)
@@ -203,15 +205,12 @@ CalculationResults = [];
     Data2Table.AverageSpeed = round( Data2Table.AverageSpeed,1 );
     
     set(gui_h.calculation_results_uitable, 'Data', table2cell(Data2Table));
-    set(gui_h.calculation_results_uitable, 'ButtonDownFcn', @showdisplacementexplanation)
     set(gui_h.calculation_results_uitable,'ColumnName',VarList);
     set(gui_h.calculation_results_uitable, 'RowName',...
       CalculationResults{:,'CellName'});
     
-%      c = CalculationResults.Properties.VariableDescriptions(VarList);
-%     set(gui_h.result_table_description_text, 'String',[c{:}])
     set(gui_h.table_description_pushbutton, 'Visible','on')
-    set(gui_h.right_click_explanation_text, 'Visible', 'on')
+    set(gui_h.Calculations_explanation_pushbutton, 'Visible', 'on')
   end
 
 % ..showresulttabledescription
@@ -225,7 +224,7 @@ CalculationResults = [];
 % ..showdisplacementexplanation
     function showdisplacementexplanation(varargin)
         fig = figure('MenuBar', 'none','ToolBar', 'none',...
-          'Visible', 'off', 'Name', 'displacement');
+          'Visible', 'off', 'Name', 'displacement', 'WindowStyle', 'modal');
         imshow('displacement.jpeg')
         set(fig, 'Visible', 'on')
     end
