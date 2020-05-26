@@ -27,7 +27,7 @@ set(gui_h.CurrentTrackCellColorIndicatorText, 'BackgroundColor',backgroundColor)
 
 %% Pushbuttons
 set(gui_h.showCalculations,   'BackgroundColor', lightGreen);
-set(gui_h.ResetCalculations, 'BackgroundColor', lightGreen);
+set(gui_h.ResetCalculations,  'BackgroundColor', lightGreen);
 set(gui_h.CurrentTrackCellColorIndicator , 'BackgroundColor', intenseRed);
 
 set(gui_h.next_pushbutton, 'FontSize', 12, 'FontWeight', 'bold')
