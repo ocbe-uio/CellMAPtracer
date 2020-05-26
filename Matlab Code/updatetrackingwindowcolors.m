@@ -2,7 +2,8 @@ function gui_h = updatetrackingwindowcolors(gui_h)
 %% updatetrackingwindowcolors - function adds colors to main gui figure
 % Colors used from https://htmlcolorcodes.com/color-chart/
 intenseGreen =  [156, 204, 101]/255;
-intenseRed = [255, 112, 67]/255;
+% intenseRed = [255, 112, 67]/255;
+intenseRed = [255, 0, 0]/255;
 lightGreen = [ 197, 225, 165 ]/255;
 backgroundColor = [1 1 1];
 
