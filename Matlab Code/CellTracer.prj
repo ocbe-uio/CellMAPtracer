@@ -1,25 +1,27 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="2539041631" file="E:\Dropbox (DMP)\Aktualne\2018 Salim\cellTracer\Matlab Code\CellTracer.prj" location="E:\Dropbox (DMP)\Aktualne\2018 Salim\cellTracer\Matlab Code" name="CellTracer" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="3583359632" file="E:\Dropbox\Aktualne\2018 Salim\cellTracer\Matlab Code\CellTracer.prj" location="E:\Dropbox\Aktualne\2018 Salim\cellTracer\Matlab Code" name="CellTracer" target="target.mlapps" target-name="Package App">
     <param.appname>CellTracer</param.appname>
     <param.authnamewatermark>Kamil Antos</param.authnamewatermark>
     <param.email>kamil.antos@umu.se</param.email>
     <param.company />
-    <param.icon />
-    <param.icons />
+    <param.icon>${PROJECT_ROOT}\CellTracer_resources\icon_24.png</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\CellTracer_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\CellTracer_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\CellTracer_resources\icon_16.png</file>
+    </param.icons>
     <param.summary />
     <param.description />
-    <param.screenshot>E:\Dropbox (DMP)\Aktualne\2018 Salim\cellTracer\CellTracerLogo.png</param.screenshot>
+    <param.screenshot>E:\Dropbox\Aktualne\2018 Salim\cellTracer\CellTracerLogo.png</param.screenshot>
     <param.version>1.0</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />
     <param.platforms />
-    <param.output>${PROJECT_ROOT}</param.output>
-    <param.guid>c46937d4-3857-4d85-bbd6-0a8fae4acd8c</param.guid>
+    <param.output>E:\Dropbox\Aktualne\2018 Salim\cellTracer\App</param.output>
+    <param.guid>35f6bc04-2288-48b2-a712-1f2e398974ed</param.guid>
     <unset>
       <param.company />
-      <param.icon />
-      <param.icons />
       <param.summary />
       <param.description />
       <param.version />
@@ -27,7 +29,6 @@
       <param.products.id />
       <param.products.version />
       <param.platforms />
-      <param.output />
     </unset>
     <fileset.main>
       <file>${PROJECT_ROOT}\CellTracer_Main.m</file>
@@ -58,45 +59,33 @@
       <file>${PROJECT_ROOT}\updateguicolors.m</file>
       <file>${PROJECT_ROOT}\updatetrackingwindowcolors.m</file>
       <file>${PROJECT_ROOT}\visualizeResults.m</file>
+      <file>${PROJECT_ROOT}\win_size.json</file>
     </fileset.depfun>
     <fileset.resources>
       <file>${PROJECT_ROOT}\displacement.jpeg</file>
-      <file>${PROJECT_ROOT}\win_size.json</file>
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="E:\Dropbox (DMP)\Aktualne\2018 Salim\cellTracer" name="Matlab Code" optional="false">E:\Dropbox (DMP)\Aktualne\2018 Salim\cellTracer\Matlab Code</file>
+      <file location="E:\Dropbox\Aktualne\2018 Salim\cellTracer" name="App" optional="false">E:\Dropbox\Aktualne\2018 Salim\cellTracer\App</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2020a</root>
+      <root>C:\Program Files\MATLAB\R2016b</root>
       <toolboxes>
-        <toolbox name="matlabcoder" />
-        <toolbox name="embeddedcoder" />
-        <toolbox name="gpucoder" />
         <toolbox name="fixedpoint" />
+        <toolbox name="matlabcoder" />
         <toolbox name="matlabhdlcoder" />
-        <toolbox name="neuralnetwork" />
+        <toolbox name="embeddedcoder" />
       </toolboxes>
-      <toolbox>
-        <matlabcoder>
-          <enabled>true</enabled>
-        </matlabcoder>
-      </toolbox>
-      <toolbox>
-        <embeddedcoder>
-          <enabled>true</enabled>
-        </embeddedcoder>
-      </toolbox>
-      <toolbox>
-        <gpucoder>
-          <enabled>true</enabled>
-        </gpucoder>
-      </toolbox>
       <toolbox>
         <fixedpoint>
           <enabled>true</enabled>
         </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
       </toolbox>
       <toolbox>
         <matlabhdlcoder>
@@ -104,9 +93,9 @@
         </matlabhdlcoder>
       </toolbox>
       <toolbox>
-        <neuralnetwork>
+        <embeddedcoder>
           <enabled>true</enabled>
-        </neuralnetwork>
+        </embeddedcoder>
       </toolbox>
     </matlab>
     <platform>
@@ -118,7 +107,7 @@
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>10.0</osver>
+      <osver>6.2</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>win64</arch>
