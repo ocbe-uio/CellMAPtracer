@@ -40,15 +40,9 @@ gui_h = track_acrossallimages_GUI();
 % Show only current frame, do not show options about dividing cells
 
 delete(gui_h.s)
-delete(gui_h.CellDivisionPanel)
 delete(gui_h.showCalculations)
-delete(gui_h.method_thresholding)
-delete(gui_h.method_watershed)
-delete(gui_h.preprocessingtext)
-% Move 'Center view' pushbutton just above 'Play const' buton:
-centerViewPushbuttonPos = gui_h.const_togglebutton.Position;
-centerViewPushbuttonPos(2) = centerViewPushbuttonPos(2) + centerViewPushbuttonPos(4);
-set(gui_h.CenterView_pushbutton, 'Position',centerViewPushbuttonPos) 
+set(gui_h.CellDivisionPanel, 'Visible', 'off')
+set(gui_h.preprocessingpanel, 'Visible', 'off')
 
 gui_h.s = axes;
 % Make XY listbox wider:
@@ -233,8 +227,8 @@ delete(gui_h.figure1)
     set(AxesHandle.CurrCircleHandle, 'YData', CurrPOS(2))
     set(AxesHandle.TitleHandle, 'String', getS3Title)
 
-    set(gui_h.RectText, 'String', sprintf('Rectangle size: %i',...
-      round(gui_h.rectangle_size_slider.Value)))
+%     set(gui_h.RectText, 'String', sprintf('Rectangle size: %i',...
+%       round(gui_h.rectangle_size_slider.Value)))
     set(gui_h.progress_slider, 'Value', ImageCount)
     
     if ~isempty(fieldnames(AllCellsText))
