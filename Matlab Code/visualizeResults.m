@@ -25,7 +25,7 @@ CellName = Tracks{Tracks.ImageID==1, 'CellName'};
 p  = plot(CellPos(:,1),CellPos(:,2), 'mo') ;
 tx = text(CellPos(:,1), CellPos(:,2), CellName,'Color', 'black',...
   'Interpreter', 'None','FontWeight','bold' );
-addcolormappopupmenu(fig, [0 0.1 0.1 0.02])
+addcolormappopupmenu(fig, [0 0.1 0.1 0.1])
 
 % Create Slider:
 ftext = uicontrol('Parent', fig, 'Style', 'text', 'Units', 'Normalized',...
