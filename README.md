@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/249989991.svg)](https://zenodo.org/badge/latestdoi/249989991)
 
-![CellTracer](CellTracerLogo.png)
+![CellTracer](CellMAPtracerLogo.png)
 
 ## CellTracer: A user-friendly tracking system for long-term migratory and proliferating cells.  
 
