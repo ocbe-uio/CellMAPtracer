@@ -28,6 +28,8 @@ set(gui_h.table_description_pushbutton, 'BackgroundColor', lightGreen)
 set(gui_h.Calculations_explanation_pushbutton,'BackgroundColor', lightGreen)
 % set(gui_h.right_click_explanation_text, 'BackgroundColor', backgroundColor)
 
+%% Figure name
+set(gui_h.Cell_Tracer_MainFigure, 'Name', getVer)
 % %% Experiment name
 % set(gui_h.exp_name_edit, 'BackgroundColor', ExperimentNameBackground)
 % 

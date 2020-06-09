@@ -7,7 +7,6 @@ function CellTracer_Main()
 gui_h = guidata(CellTracer_Main_GUI);
 updateguicolors(gui_h)
 
-
 set(gui_h.inspect_track_pushbutton,     'Callback', @inspecttrack)
 % Note: exporting only XY position: (not used in current version)
 set(gui_h.Calculations_explanation_pushbutton, 'Callback', @showdisplacementexplanation)
@@ -217,7 +216,7 @@ CalculationResults = [];
   function showresulttabledescription(varargin)
     helpHandle =...
       helpdlg(CalculationResults.Properties.VariableDescriptions(4:end),...
-      'Cell Track Analysis Table Description');
+      'Cells Track Analysis Table Description');
     set(helpHandle, 'WindowStyle', 'modal');
   end
 
