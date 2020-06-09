@@ -4,7 +4,7 @@
 
 ![CellTracer](CellMAPtracerLogo.png)
 
-## CellTracer: A user-friendly tracking system for long-term migratory and proliferating cells.  
+## CellMAPtracer: A user-friendly tracking tool for long-term migratory and proliferating cells.  
 
 ## Getting Started
 To start using program user have couple of option. The simplest way is install program as Matlab App and run it from Matlab within Matlab environment. More advance users which would like to look around code should clone whole repository go to Matlab Code folder and run main fuction (CellTracer_Main). 
