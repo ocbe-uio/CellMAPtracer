@@ -1,8 +1,8 @@
-# Cell Tracer
+# CellMAPtracer
 
 [![DOI](https://zenodo.org/badge/249989991.svg)](https://zenodo.org/badge/latestdoi/249989991)
 
-![CellTracer](CellMAPtracerLogo.png)
+![CellMAPtracer](CellMAPtracerLogo.png)
 
 ## CellMAPtracer: A user-friendly tracking tool for long-term migratory and proliferating cells.  
 
