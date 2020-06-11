@@ -13,9 +13,9 @@ To start using the CellMAPtracer program, user have couple of options. The simpl
 1. Download App folder from repository  
 2. Open Matlab on any system (Windows, Mac, Linux)  
 3. In Matlab go to APPS tab and click 'Install App'  
-4. Find  ```Cell Tracer.mlappinstall```  
+4. Find  ```CellMAPtracer.mlappinstall```  
 5. Click install  
 6. Open App from Application list in Matlab  
 
 ## Run Cell Tracer from code
-Open project in Matlab, run ```CellTracer_Main```
+Open project in Matlab, run ```CellMAPtracer_Main```
