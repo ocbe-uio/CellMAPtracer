@@ -7,7 +7,7 @@
 ## CellMAPtracer: A user-friendly tracking tool for long-term migratory and proliferating cells.  
 
 ## Getting Started
-To start using the CellMAPtracer program, user have couple of options. The simplest way is to install the program as Matlab App and run it from Matlab within Matlab environment. More advance users who would like to look around code should clone whole repository go to Matlab Code folder and run main fuction (CellTracer_Main). 
+To start using the CellMAPtracer program, user have couple of options. The simplest way is to install the program as Matlab App and run it from Matlab within Matlab environment. More advance users who would like to look around the code, should clone the whole repository and go to Matlab Code folder and run main fuction "CellMAPtracer_Main". 
 
 ## Install Matlab App
 1. Download App folder from repository  
