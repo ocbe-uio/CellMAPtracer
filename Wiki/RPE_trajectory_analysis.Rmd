@@ -225,7 +225,7 @@ length(DFFF)
 DFF <- DFFF
 TT <- c() # to be used for showing the edge length
 for (i in 1:length(DFFF)) {
-	TT <-c(TT, df[which(df[, 3] == DF[i, 1]), 6])
+	TT <- c(TT, df[which(df[, 3] == DF[i, 1]), 6])
 }
 for (j in 1:length(DFF)) {
 	parents <- c()
@@ -239,7 +239,7 @@ for (j in 1:length(DFF)) {
 		}
 	}
 	d <- tibble(Offspring, parents)
-	d2 <- data.frame(from <- d$parents, to=d$Offspring)
+	d2 <- data.frame(from=d$parents, to=d$Offspring)
 
 	g <- graph_from_data_frame(d2)
 	ordered.vertices <- get.data.frame(g, what="vertices")
