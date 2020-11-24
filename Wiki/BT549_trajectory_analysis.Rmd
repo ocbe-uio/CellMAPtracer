@@ -258,11 +258,6 @@ for (j in 1:length(DFF)) {
 	}
 	co <- layout.reingold.tilford(g, flip.y <- TRUE)
 	par(mar = c(0, 0, 0, 0) + .1)
-	plot(
-		g, layout=co,edge.arrow.size=1.5, vertex.shape="circle", vertex.size=26,
-		vertex.color=COLOR, vertex.label.cex=0.8, vertex.label.font=2,
-		vertex.label.color="black"
-	)
 }
 ```
 
@@ -322,8 +317,8 @@ plot(
 ## Loading the data after converting each file into csv
 
 ```{r}
-df1 <- read.csv(file.path(path, "A3_1_Feb12 All Cells.csv"))
-df2 <- read.csv(file.path(path, "A3_2_Feb12 All Cells.csv"))
+df1 <- read.csv(file.path(path, "A3_1_Feb12 All Cells_Results.csv"))
+df2 <- read.csv(file.path(path, "A3_2_Feb12 All Cells_Results.csv"))
 df3 <- read.csv(file.path(path, "C10_2_Feb12 All Cells_Results.csv"))
 df <- rbind(df1, df2, df3)
 head(df)
@@ -355,7 +350,7 @@ box()
 ## Loading the data after converting each file into csv
 
 ```{r}
-df1 <- read.csv(file.path(path, "A3_1_Feb12 Daughter Cells.csv")
+df1 <- read.csv(file.path(path, "A3_1_Feb12 Dividing Daughter Cells.csv"))
 ```
 
 ## twining the daughter cells in df1
@@ -404,7 +399,7 @@ for (i in 1:length(df2[, 1])) {
 ## twining the daughter cells in df3
 
 ```{r}
-df3 <- read.csv(file.path(path, "C10_2_Feb12 Daughter Cells.csv")
+df3 <- read.csv(file.path(path, "C10_2_Feb12 Daughter Cells.csv"))
 newDF3 <- data.frame()
 for (i in 1:length(df3[, 1])) {
 	w <- strsplit(df3[i, 3], "")

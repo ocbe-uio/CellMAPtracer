@@ -5,14 +5,14 @@ Needed packages
 
     ## Loading required package: tidyverse
 
-    ## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+    ## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 
     ## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
     ## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
     ## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
     ## ✔ readr   1.4.0     ✔ forcats 0.5.0
 
-    ## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
 
@@ -75,20 +75,13 @@ Now we can properly read the files.
     df <- rbind(df1, df2, df3)
     head(df)
 
-    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime Directionality
-    ## 1          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145    375.9        155.4           1440          0.413
-    ## 2          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182    631.8         36.8           1810          0.058
-    ## 3          Feb12 A3_1_Feb12.tif     C7.1      TRUE       TRUE     219    462.8          5.1           2180          0.011
-    ## 4          Feb12 A3_1_Feb12.tif     C7.2      TRUE       TRUE     212    472.0         64.7           2110          0.137
-    ## 5          Feb12 A3_1_Feb12.tif     C9.1      TRUE       TRUE     149    460.1         55.5           1480          0.121
-    ## 6          Feb12 A3_1_Feb12.tif     C9.2      TRUE       TRUE     170    565.6        131.5           1690          0.232
-    ##   AverageSpeed
-    ## 1        0.261
-    ## 2        0.349
-    ## 3        0.212
-    ## 4        0.224
-    ## 5        0.311
-    ## 6        0.335
+    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime Directionality AverageSpeed
+    ## 1          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145    375.9        155.4           1440          0.413        0.261
+    ## 2          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182    631.8         36.8           1810          0.058        0.349
+    ## 3          Feb12 A3_1_Feb12.tif     C7.1      TRUE       TRUE     219    462.8          5.1           2180          0.011        0.212
+    ## 4          Feb12 A3_1_Feb12.tif     C7.2      TRUE       TRUE     212    472.0         64.7           2110          0.137        0.224
+    ## 5          Feb12 A3_1_Feb12.tif     C9.1      TRUE       TRUE     149    460.1         55.5           1480          0.121        0.311
+    ## 6          Feb12 A3_1_Feb12.tif     C9.2      TRUE       TRUE     170    565.6        131.5           1690          0.232        0.335
 
     dim(df)
 
@@ -379,15 +372,8 @@ Plotting the lineage tree of each cell and its descendants
             }
         }
         co <- layout.reingold.tilford(g, flip.y <- TRUE)
-        par(mfrow = c(8, 4), mar = c(0,0,0,0) + .1)
-        plot(
-            g, layout=co,edge.arrow.size=1.5, vertex.shape="circle", vertex.size=26,
-            vertex.color=COLOR, vertex.label.cex=0.8, vertex.label.font=2,
-            vertex.label.color="black"
-        )
+        par(mar = c(0, 0, 0, 0) + .1)
     }
-
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-1.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-2.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-3.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-4.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-5.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-6.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-7.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-8.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-9.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-10.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-11.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-12.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-13.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-14.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-15.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-16.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-17.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-18.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-19.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-20.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-21.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-22.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-23.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-24.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-25.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-26.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-27.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-28.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-29.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-30.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-31.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-32.png)
 
 Plotting the lineage tree of a particular cell and its descendants
 ------------------------------------------------------------------
@@ -444,125 +430,270 @@ Plotting the lineage tree of a particular cell and its descendants
 
 ![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-13-1.png)
 
-########################################################################################################### 
+Section 3: Generation plot for all the data
+===========================================
 
-################### Sction \# 3: Generation plot for all the data
+Loading the data after converting each file into csv
+----------------------------------------------------
 
-########################################################################################################### 
+    df1 <- read.csv(file.path(path, "A3_1_Feb12 All Cells_Results.csv"))
+    df2 <- read.csv(file.path(path, "A3_2_Feb12 All Cells_Results.csv"))
+    df3 <- read.csv(file.path(path, "C10_2_Feb12 All Cells_Results.csv"))
+    df <- rbind(df1, df2, df3)
+    head(df)
 
-#################### Loading the data after converting each file into csv
+    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime Directionality AverageSpeed
+    ## 1          Feb12 A3_1_Feb12.tif       C1      TRUE      FALSE     100    353.7         50.6            990          0.143        0.357
+    ## 2          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145    375.9        155.4           1440          0.413        0.261
+    ## 3          Feb12 A3_1_Feb12.tif   C1.1.1     FALSE       TRUE     188    590.9        141.6           1870          0.240        0.316
+    ## 4          Feb12 A3_1_Feb12.tif   C1.1.2     FALSE       TRUE     188    516.2         71.9           1870          0.139        0.276
+    ## 5          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182    631.8         36.8           1810          0.058        0.349
+    ## 6          Feb12 A3_1_Feb12.tif   C1.2.1     FALSE       TRUE     151    455.3        110.9           1500          0.243        0.304
 
-df1&lt;- read.table(file.choose(),sep=“,”,header=T) \#\#\#\#
-A3\_1\_Feb12 All Cells.csv df2&lt;-
-read.table(file.choose(),sep=“,”,header=T) \#\#\#\# A3\_2\_Feb12 All
-Cells.csv df3&lt;- read.table(file.choose(),sep=“,”,header=T) \#\#\#\#
-C10\_2\_Feb12 All Cells\_Results.csv df&lt;-rbind(df1,df2,df3) head(df)
-dim(df) mothers&lt;-c() first&lt;-c() second&lt;-c() third&lt;-c()
-fourth&lt;-c() for (i in 1:length(df\[,1\])){ st&lt;-strsplit(df\[i,3\],
-regex(“\\.”, multiline = TRUE)) L=length(st\[\[1\]\])-1 if
-(L==0){mothers=c(mothers,L)} if (L==1){first=c(first,L)} if
-(L==2){second=c(second,L)} if (L==3){third=c(third,L)} if
-(L==4){fourth=c(fourth,L)} }
-generations=c(length(third),length(second),length(first),length(mothers))
-barplot(generations,horiz=T,col=c(“bisque1”,“bisque2”,“bisque3”,“bisque4”),xlab=“Number
-of cells”,xlim=c(0,275)) box()
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+    dim(df)
 
-########################################################################################################### 
+    ## [1] 648  11
 
-################### Sction \# 4: Heterogeneity between daughter cells
+    mothers <- c()
+    first <- c()
+    second <- c()
+    third <- c()
+    fourth <- c()
+    for (i in 1:length(df[, 1])) {
+        st <- strsplit(df[i, 3], regex("\\.", multiline=TRUE))
+        L <- length(st[[1]]) - 1
+        if (L == 0) mothers <- c(mothers, L)
+        if (L == 1) first <- c(first, L)
+        if (L == 2) second <- c(second, L)
+        if (L == 3) third <- c(third, L)
+        if (L == 4) fourth <- c(fourth, L)
+    }
+    generations <- c(length(third), length(second), length(first), length(mothers))
+    barplot(
+        generations, horiz=TRUE, col=c("bisque1","bisque2","bisque3","bisque4"),
+        xlab="Number of cells", xlim=c(0, 275)
+    )
+    box()
 
-########################################################################################################### 
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-14-1.png)
 
-################# Loading the data after converting each file into csv
+Section 4: Heterogeneity between daughter cells
+===============================================
 
-df1&lt;- read.table(file.choose(),sep=“,”,header=T) \#\#\#\#
-A3\_1\_Feb12 Daughter Cells.csv
+Loading the data after converting each file into csv
+----------------------------------------------------
 
-##### twining the daughter cells in df1
+    df1 <- read.csv(file.path(path, "A3_1_Feb12 Dividing Daughter Cells.csv"))
 
-implode &lt;- function(…, sep=’’) { paste(…, collapse=sep) }
-newDF1&lt;-data.frame() for (i in 1: length(df1\[,1\])){
-w&lt;-strsplit(df1\[i,3\], "") ww&lt;-w\[\[1\]\]\[length(w\[\[1\]\])\]
-ww&lt;-as.numeric(w\[\[1\]\]\[length(w\[\[1\]\])\]) if (ww==1){
-w\[\[1\]\]\[length(w\[\[1\]\])\]&lt;-2 se&lt;-implode(w\[\[1\]\])
-wh&lt;-which(df1\[,3\]==paste0(se)) if (length(wh)&gt;0){
-newDF1&lt;-rbind(newDF1,df1\[i,\],df1\[wh,\]) } } }
+twining the daughter cells in df1
+---------------------------------
 
-df2&lt;- read.table(file.choose(),sep=“,”,header=T) \#\#\#\#
-A3\_2\_Feb12 Daughter Cells.csv \#\#\#\#\# twining the daughter cells in
-df2 implode &lt;- function(…, sep=’’) { paste(…, collapse=sep) }
-newDF2&lt;-data.frame() for (i in 1: length(df2\[,1\])){
-w&lt;-strsplit(df2\[i,3\], "") ww&lt;-w\[\[1\]\]\[length(w\[\[1\]\])\]
-ww&lt;-as.numeric(w\[\[1\]\]\[length(w\[\[1\]\])\]) if (ww==1){
-w\[\[1\]\]\[length(w\[\[1\]\])\]&lt;-2 se&lt;-implode(w\[\[1\]\])
-wh&lt;-which(df2\[,3\]==paste0(se)) if (length(wh)&gt;0){
-newDF2&lt;-rbind(newDF2,df2\[i,\],df2\[wh,\]) } } }
+    implode <- function(..., sep='') paste(..., collapse=sep)
+    newDF1 <- data.frame()
+    for (i in 1:length(df1[, 1])) {
+        w <- strsplit(df1[i, 3], "")
+        ww <- w[[1]][length(w[[1]])]
+        ww <- as.numeric(w[[1]][length(w[[1]])])
+        if (ww == 1) {
+            w[[1]][length(w[[1]])] <- 2
+            se <- implode(w[[1]])
+            wh <- which(df1[, 3] == paste0(se))
+            if (length(wh) > 0){
+                newDF1 <- rbind(newDF1, df1[i, ], df1[wh, ])
+            }
+        }
+    }
 
-df3&lt;- read.table(file.choose(),sep=“,”,header=T) \#\#\#\#
-C10\_2\_Feb12 Daughter Cells.csv \#\#\#\#\# twining the daughter cells
-in df3 implode &lt;- function(…, sep=’’) { paste(…, collapse=sep) }
-newDF3&lt;-data.frame() for (i in 1: length(df3\[,1\])){
-w&lt;-strsplit(df3\[i,3\], "") ww&lt;-w\[\[1\]\]\[length(w\[\[1\]\])\]
-ww&lt;-as.numeric(w\[\[1\]\]\[length(w\[\[1\]\])\]) if (ww==1){
-w\[\[1\]\]\[length(w\[\[1\]\])\]&lt;-2 se&lt;-implode(w\[\[1\]\])
-wh&lt;-which(df3\[,3\]==paste0(se)) if (length(wh)&gt;0){
-newDF3&lt;-rbind(newDF3,df3\[i,\],df3\[wh,\]) } } }
+twining the daughter cells in df2
+---------------------------------
 
-dcells&lt;-rbind(newDF1,newDF2,newDF3) head(dcells) dim(dcells)
-firstDC&lt;-c() \# selecting the first DCell
-num=c(1:length(dcells\[,1\])) for (k in num){ if(!(k %% 2) == 0) {
-firstDC=c(firstDC,k) } }
+    df2 <-  read.csv(file.path(path, "A3_2_Feb12 Daughter Cells.csv"))
+    implode <- function(..., sep='') {
+        paste(..., collapse=sep)
+    }
+    newDF2 <- data.frame()
+    for (i in 1:length(df2[, 1])) {
+        w <- strsplit(df2[i, 3], "")
+        ww <- w[[1]][length(w[[1]])]
+        ww <- as.numeric(w[[1]][length(w[[1]])])
+        if (ww == 1) {
+            w[[1]][length(w[[1]])] <- 2
+            se <- implode(w[[1]])
+            wh <- which(df2[, 3] == paste0(se))
+            if (length(wh) > 0) {
+                newDF2 <- rbind(newDF2, df2[i, ], df2[wh, ])
+            }
+        }
+    }
 
-sdDiff=18 \#\#\#\# no trajectory time difference larger than 3 hours
-between the two daughter cells minStep=60 \#\#\#\# minimum trajectory
-time of 10 hours selectedrows=c() for (i in firstDC){ if
-(abs(dcells\[i,6\]-dcells\[i+1,6\])&lt;=sdDiff & dcells\[i,6\]&gt;=
-minStep & dcells\[i+1,6\]&gt;= minStep){ selectedrows=c(selectedrows,i)
-} } Fselectedrows=c(selectedrows,(selectedrows+1)) \#\#\#\#\#\#\#\#\#\#
-including the other cell Fselectedrows=sort(Fselectedrows)
-Fdcells=dcells\[Fselectedrows,\] diffDC&lt;-dcells\[selectedrows,\] for
-(i in selectedrows){ diffDC\[which(selectedrows %in%
-i),5:11\]&lt;-abs(dcells\[i,5:11\]-dcells\[i+1,5:11\]) }
-length(diffDC\[,1\]) \#\#\#\#\#\#\#\#\#\#\#\#\#\# Number of pairs of
-daughter cells included in the analysis summary(diffDC\[,11\]*60) \#\#
-speed difference summary(diffDC\[,7\]) \#\# total distance difference
-summary(diffDC\[,10\]*100) \#\# directionality difference (%)
-summary(diffDC\[,8\]) \#\# displacement difference par(mfrow=c(1,4))
-boxplot(diffDC\[,11\]*60, ylab=“Average Speed difference
-(um/h)”,cex.lab=1.2, cex.axis=1.2,col=“yellow”,ylim=c(0,10))
-boxplot(diffDC\[,10\]*100, ylab=“Directionality difference
-(%)”,cex.lab=1.2, cex.axis=1.2,col=“lightgreen”,ylim=c(0,40))
-boxplot(diffDC\[,7\],ylab=“Total Distance difference (um)”,cex.lab=1.2,
-cex.axis=1.2,col=“lightblue”,ylim=c(0,200)) boxplot(diffDC\[,8\],
-ylab=“Displacement difference (um)”,cex.lab=1.2,
-cex.axis=1.2,col=“blue”,ylim=c(0,200))
+twining the daughter cells in df3
+---------------------------------
 
-########## Computing the Time Diffrence between divisions of BT549 daughter cells
+    df3 <- read.csv(file.path(path, "C10_2_Feb12 Daughter Cells.csv"))
+    newDF3 <- data.frame()
+    for (i in 1:length(df3[, 1])) {
+        w <- strsplit(df3[i, 3], "")
+        ww <- w[[1]][length(w[[1]])]
+        ww <- as.numeric(w[[1]][length(w[[1]])])
+        if (ww == 1) {
+            w[[1]][length(w[[1]])] <- 2
+            se <- implode(w[[1]])
+            wh <- which(df3[, 3] == paste0(se))
+            if (length(wh) > 0) {
+                newDF3 <- rbind(newDF3, df3[i, ], df3[wh, ])
+            }
+        }
+    }
+    dcells <- rbind(newDF1, newDF2, newDF3)
+    head(dcells)
 
-TimeDifferences=c() for (i in firstDC){ if (dcells\[i,4\]==TRUE &
-dcells\[i+1,4\]==TRUE){ h=abs(dcells\[i,9\]-dcells\[i+1,9\])
-TimeDifferences=c(TimeDifferences,h) } } length(TimeDifferences)
-\#\#\#\#\#\#\#\#\#\#\#\#\#\# Number of pairs of daughter cells included
-in the analysis
+    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime Directionality AverageSpeed
+    ## 1          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145    375.9        155.4           1440          0.413        0.261
+    ## 2          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182    631.8         36.8           1810          0.058        0.349
+    ## 3          Feb12 A3_1_Feb12.tif     C7.1      TRUE       TRUE     219    462.8          5.1           2180          0.011        0.212
+    ## 4          Feb12 A3_1_Feb12.tif     C7.2      TRUE       TRUE     212    472.0         64.7           2110          0.137        0.224
+    ## 5          Feb12 A3_1_Feb12.tif     C9.1      TRUE       TRUE     149    460.1         55.5           1480          0.121        0.311
+    ## 6          Feb12 A3_1_Feb12.tif     C9.2      TRUE       TRUE     170    565.6        131.5           1690          0.232        0.335
 
-summary(TimeDifferences/60) sd(TimeDifferences/60) \# Computing the mode
-getmode &lt;- function(v) { uniqv &lt;- unique(v)
-uniqv\[which.max(tabulate(match(v, uniqv)))\] } result &lt;-
-getmode(TimeDifferences) print(result)
+    dim(dcells)
+
+    ## [1] 446  11
+
+    firstDC <- c() # selecting the first DCell
+    num <- c(1:length(dcells[, 1]))
+    for (k in num) {
+        if(!(k %% 2) == 0) {
+            firstDC <- c(firstDC, k)
+        }
+    }
+    sdDiff <- 18 # no trajectory time difference larger than 3 hours between the two daughter cells
+    minStep <- 60 # minimum trajectory time of 10 hours
+    selectedrows <- c()
+    for (i in firstDC) {
+        condition1 <-abs(dcells[i, 6] - dcells[i + 1, 6]) <= sdDiff
+        condition2 <- dcells[i, 6]>= minStep
+        condition3 <- dcells[i + 1, 6]>= minStep
+        if (condition1 & condition2 & condition3) {
+            selectedrows <- c(selectedrows, i)
+        }
+    }
+    Fselectedrows <- c(selectedrows, (selectedrows + 1)) # including the other cell
+    Fselectedrows <- sort(Fselectedrows)
+    Fdcells <- dcells[Fselectedrows, ]
+    diffDC <- dcells[selectedrows, ]
+    for (i in selectedrows) {
+        diffDC[which(selectedrows %in% i), 5:11] <- abs(
+            dcells[i, 5:11] - dcells[i + 1, 5:11]
+        )
+    }
+
+Number of pairs of daughter cells included in the analysis
+----------------------------------------------------------
+
+    length(diffDC[, 1])
+
+    ## [1] 98
+
+    summary(diffDC[, 11] * 60)    ## speed difference
+
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##   0.000   0.675   1.770   2.282   3.180   9.780
+
+    summary(diffDC[, 7])          ## total distance difference
+
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##    0.80   20.50   44.75   58.51   83.50  266.50
+
+    summary(diffDC[, 10] * 100)   ## directionality difference (%)
+
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##   0.100   3.925   7.650  10.394  13.825  51.800
+
+    summary(diffDC[, 8])          ## displacement difference
+
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##    0.40   22.62   40.45   53.37   70.10  230.40
+
+    par(mfrow=c(1,4))
+    boxplot(
+        diffDC[, 11] * 60, ylab="Average Speed difference (um/h)", cex.lab=1.2,
+        cex.axis=1.2, col="yellow", ylim=c(0, 10)
+    )
+    boxplot(
+        diffDC[, 10] * 100, ylab="Directionality difference (%)", cex.lab=1.2,
+        cex.axis=1.2, col="lightgreen", ylim=c(0, 40)
+    )
+    boxplot(
+        diffDC[, 7], ylab="Total Distance difference (um)", cex.lab=1.2,
+        cex.axis=1.2, col="lightblue", ylim=c(0, 200)
+    )
+    boxplot(
+        diffDC[,8], ylab="Displacement difference (um)", cex.lab=1.2, cex.axis=1.2,
+        col="blue", ylim=c(0, 200)
+    )
+
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-19-1.png)
+
+Computing the Time Diffrence between divisions of BT549 daughter cells
+----------------------------------------------------------------------
+
+    TimeDifferences <- c()
+    for (i in firstDC) {
+        if (dcells[i, 4] == TRUE & dcells[i + 1, 4] == TRUE) {
+            h <- abs(dcells[i, 9] - dcells[i + 1, 9])
+            TimeDifferences <- c(TimeDifferences, h)
+        }
+    }
+    length(TimeDifferences) # pairs of daughter cells included in the analysis
+
+    ## [1] 71
+
+    summary(TimeDifferences / 60)
+
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##  0.1667  2.0000  3.6667  5.6761  8.1667 25.0000
+
+    sd(TimeDifferences / 60)
+
+    ## [1] 5.517065
+
+Computing the mode
+------------------
+
+    getmode <- function(v) {
+        uniqv <- unique(v)
+        uniqv[which.max(tabulate(match(v, uniqv)))]
+    }
+    result <- getmode(TimeDifferences)
+    print(result)
+
+    ## [1] 120
 
 Boxplot
 -------
 
-boxplot(TimeDifferences/60, ylab=“Time difference between the division
-of daughter cells (h)”, cex.lab=1.2,
-cex.axis=1.2,col=“gray”,ylim=c(0,40),las=1) \#\# Violin plot
-TD=TimeDifferences/60 Group= c(rep(1,length(TD)))
-Da&lt;-data.frame(TD,Group) data\_summary &lt;- function(x) { m &lt;-
-mean(x) ymin &lt;- m-sd(x) ymax &lt;- m+sd(x)
-return(c(y=m,ymin=ymin,ymax=ymax)) } p &lt;- ggplot(Da, aes(x=Group,
-y=TD)) + geom\_violin(trim=FALSE,fill=“gray”)+
-geom\_point(size=2.5,color=“black”) p +
-stat\_summary(fun.data=data\_summary,geom=“pointrange”, color=“red”,size
-= 1)
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+    boxplot(
+        TimeDifferences / 60,
+        ylab="Time difference between the division of daughter cells (h)",
+        cex.lab=1.2, cex.axis=1.2, col="gray", ylim=c(0, 40), las=1
+    )
+
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-22-1.png)
+
+Violin plot
+-----------
+
+    TD <- TimeDifferences / 60
+    Group <- c(rep(1, length(TD)))
+    Da <- data.frame(TD, Group)
+    data_summary <- function(x) {
+        m <- mean(x)
+        ymin <- m - sd(x)
+        ymax <- m + sd(x)
+        return(c(y=m, ymin=ymin, ymax=ymax))
+    }
+    p <- ggplot(Da, aes(x=Group, y=TD)) +
+        geom_violin(trim=FALSE, fill="gray") + geom_point(size=2.5, color="black")
+    p + stat_summary(fun.data=data_summary,geom ="pointrange", color="red", size=1)
+
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-23-1.png)
