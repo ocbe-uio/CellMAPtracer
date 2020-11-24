@@ -1,57 +1,11 @@
+
+
 Needed packages
 ===============
 
 ``` r
 require(tidyverse)
-```
-
-    ## Loading required package: tidyverse
-
-    ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-
-    ## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-    ## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-    ## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-    ## ✔ readr   1.4.0     ✔ forcats 0.5.0
-
-    ## ── Conflicts ────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
 require(igraph)
-```
-
-    ## Loading required package: igraph
-
-    ## 
-    ## Attaching package: 'igraph'
-
-    ## The following objects are masked from 'package:dplyr':
-    ## 
-    ##     as_data_frame, groups, union
-
-    ## The following objects are masked from 'package:purrr':
-    ## 
-    ##     compose, simplify
-
-    ## The following object is masked from 'package:tidyr':
-    ## 
-    ##     crossing
-
-    ## The following object is masked from 'package:tibble':
-    ## 
-    ##     as_data_frame
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     decompose, spectrum
-
-    ## The following object is masked from 'package:base':
-    ## 
-    ##     union
-
-``` r
 require(ggplot2)
 ```
 

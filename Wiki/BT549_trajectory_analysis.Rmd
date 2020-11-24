@@ -1,9 +1,10 @@
 ---
 title: BT549 Cells
+toc: true
 ---
 
 # Needed packages
-```{r load-packages}
+```{r load-packages, message=FALSE}
 require(tidyverse)
 require(igraph)
 require(ggplot2)
