@@ -48,20 +48,20 @@ df <- read.csv(file.path(path, "PIP-FUCCI Dividing Daughter Cells.csv"))
 head(df)
 ```
 
-    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement
-    ## 1      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7
-    ## 2      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113    127.2         40.5
-    ## 3      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126    126.7         32.0
-    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133    181.2          9.8
-    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.2.2      TRUE       TRUE     149    224.2         16.1
-    ## 6      PIP-FUCCI PIP-FUCCI.tif     C4.1      TRUE       TRUE     103    237.3         20.2
-    ##   TrajectoryTime Directionality AverageSpeed
-    ## 1            610          0.156        0.292
-    ## 2            560          0.319        0.227
-    ## 3            625          0.253        0.203
-    ## 4            660          0.054        0.275
-    ## 5            740          0.072        0.303
-    ## 6            510          0.085        0.465
+    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime
+    ## 1      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7            610
+    ## 2      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113    127.2         40.5            560
+    ## 3      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126    126.7         32.0            625
+    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133    181.2          9.8            660
+    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.2.2      TRUE       TRUE     149    224.2         16.1            740
+    ## 6      PIP-FUCCI PIP-FUCCI.tif     C4.1      TRUE       TRUE     103    237.3         20.2            510
+    ##   Directionality AverageSpeed
+    ## 1          0.156        0.292
+    ## 2          0.319        0.227
+    ## 3          0.253        0.203
+    ## 4          0.054        0.275
+    ## 5          0.072        0.303
+    ## 6          0.085        0.465
 
 ``` r
 dim(df)
@@ -312,20 +312,20 @@ df <- read.csv(file.path(path, "PIP-FUCCI All Cells_Results.csv"))
 head(df)
 ```
 
-    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement
-    ## 1      PIP-FUCCI PIP-FUCCI.tif       C1      TRUE      FALSE     182    202.9         27.6
-    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55     82.2          7.4
-    ## 3      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45     74.2          7.8
-    ## 4      PIP-FUCCI PIP-FUCCI.tif       C2     FALSE      FALSE     425    627.1         10.6
-    ## 5      PIP-FUCCI PIP-FUCCI.tif       C3      TRUE      FALSE      32     78.0         22.9
-    ## 6      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7
-    ##   TrajectoryTime Directionality AverageSpeed
-    ## 1            905          0.136        0.224
-    ## 2            270          0.089        0.304
-    ## 3            220          0.106        0.337
-    ## 4           2120          0.017        0.296
-    ## 5            155          0.294        0.503
-    ## 6            610          0.156        0.292
+    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime
+    ## 1      PIP-FUCCI PIP-FUCCI.tif       C1      TRUE      FALSE     182    202.9         27.6            905
+    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55     82.2          7.4            270
+    ## 3      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45     74.2          7.8            220
+    ## 4      PIP-FUCCI PIP-FUCCI.tif       C2     FALSE      FALSE     425    627.1         10.6           2120
+    ## 5      PIP-FUCCI PIP-FUCCI.tif       C3      TRUE      FALSE      32     78.0         22.9            155
+    ## 6      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7            610
+    ##   Directionality AverageSpeed
+    ## 1          0.136        0.224
+    ## 2          0.089        0.304
+    ## 3          0.106        0.337
+    ## 4          0.017        0.296
+    ## 5          0.294        0.503
+    ## 6          0.156        0.292
 
 ``` r
 dim(df)
@@ -399,39 +399,6 @@ for (j in 1:length(DFF)) {
 }
 ```
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
 Plots can be generated and saved to the user’s working directory with
 the following code (not executed here for brevity):
 
@@ -502,12 +469,6 @@ for (i in 1:length(ordered.vertices[, 1])) {
 }
 TTT <- TT / TT[which.max(TT)]
 E(g)$weight <- TTT
-```
-
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
-    ## replacement length
-
-``` r
 set.seed(100)
 test.layout <- layout_(g, with_dh(weight.edge.lengths=TTT))
 test.layout[, 1] <- test.layout[, 1] * 2
@@ -521,7 +482,7 @@ plot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/lineage-tree-2-1.png)<!-- -->
 
 Section 3: Generation plot for all the data
 ===========================================
@@ -570,20 +531,20 @@ dim(dcells)
 head(dcells)
 ```
 
-    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement
-    ## 1      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55     82.2          7.4
-    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45     74.2          7.8
-    ## 3      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7
-    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133    181.2          9.8
-    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113    127.2         40.5
-    ## 6      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126    126.7         32.0
-    ##   TrajectoryTime Directionality AverageSpeed
-    ## 1            270          0.089        0.304
-    ## 2            220          0.106        0.337
-    ## 3            610          0.156        0.292
-    ## 4            660          0.054        0.275
-    ## 5            560          0.319        0.227
-    ## 6            625          0.253        0.203
+    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime
+    ## 1      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55     82.2          7.4            270
+    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45     74.2          7.8            220
+    ## 3      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7            610
+    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133    181.2          9.8            660
+    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113    127.2         40.5            560
+    ## 6      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126    126.7         32.0            625
+    ##   Directionality AverageSpeed
+    ## 1          0.089        0.304
+    ## 2          0.106        0.337
+    ## 3          0.156        0.292
+    ## 4          0.054        0.275
+    ## 5          0.319        0.227
+    ## 6          0.253        0.203
 
 ``` r
 firstDC <- c() # selecting first DCell
@@ -669,7 +630,7 @@ boxplot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 Computing the Time Diffrence between divisions of RPE daughter cells
 --------------------------------------------------------------------
@@ -742,7 +703,7 @@ p <- ggplot(Da, aes(x=Group, y=TD)) +
 p + stat_summary(fun.data=data_summary, geom="pointrange", color="red", size=1)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 Section 5: Changes across cell cycle phases
 ===========================================
@@ -1010,7 +971,7 @@ axis(1, at=c(1, 2,3), labels=c('G1', "S", "G2"))
 axis(2, at =30, pos=-0.45, tck=0, labels='Average Instantaneous Speeds (um/h)')
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 
 ### Boxplot
 
@@ -1026,7 +987,7 @@ boxplot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
 
 ### Barplot
 
@@ -1050,7 +1011,7 @@ segments(pp - 0.1, yy + std1, pp + 0.1, yy + std1)
 box()
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
 
 Pairwise comparisons using Wilcoxon rank sum test with continuity correction
 ----------------------------------------------------------------------------
@@ -1178,7 +1139,7 @@ boxplot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
 
 #### Barplot
 
@@ -1201,7 +1162,7 @@ segments(pp - 0.1, yy + std1, pp + 0.1, yy + std1)
 box()
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
 
 Pairwise comparisons using Wilcoxon rank sum test with continuity correction
 ----------------------------------------------------------------------------
@@ -1343,7 +1304,7 @@ add_legend(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
 
 JUMP
 ----
@@ -1466,7 +1427,7 @@ yy <- c(-12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0)
 axis(1, at=xx, labels=yy, col.axis="black", las=1, cex.axis=0.73)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
 
 Plotting tbe mean speed across the cell cycle phases for cells without a jump
 -----------------------------------------------------------------------------
@@ -1560,4 +1521,4 @@ yy <- c(-12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0)
 axis(1, at=xx, labels=yy, col.axis="black", las=1, cex.axis=0.73)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-41-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
