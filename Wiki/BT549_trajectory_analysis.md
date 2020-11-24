@@ -379,7 +379,7 @@ Plotting the lineage tree of each cell and its descendants
             }
         }
         co <- layout.reingold.tilford(g, flip.y <- TRUE)
-        par(mar=c(0,0,0,0)+.1)
+        par(mfrow = c(8, 4), mar = c(0,0,0,0) + .1)
         plot(
             g, layout=co,edge.arrow.size=1.5, vertex.shape="circle", vertex.size=26,
             vertex.color=COLOR, vertex.label.cex=0.8, vertex.label.font=2,
