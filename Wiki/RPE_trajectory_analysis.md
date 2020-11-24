@@ -48,20 +48,20 @@ df <- read.csv(file.path(path, "PIP-FUCCI Dividing Daughter Cells.csv"))
 head(df)
 ```
 
-    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages
-    ## 1      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123
-    ## 2      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113
-    ## 3      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126
-    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133
-    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.2.2      TRUE       TRUE     149
-    ## 6      PIP-FUCCI PIP-FUCCI.tif     C4.1      TRUE       TRUE     103
-    ##   Distance Displacement TrajectoryTime Directionality AverageSpeed
-    ## 1    178.1         27.7            610          0.156        0.292
-    ## 2    127.2         40.5            560          0.319        0.227
-    ## 3    126.7         32.0            625          0.253        0.203
-    ## 4    181.2          9.8            660          0.054        0.275
-    ## 5    224.2         16.1            740          0.072        0.303
-    ## 6    237.3         20.2            510          0.085        0.465
+    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement
+    ## 1      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7
+    ## 2      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113    127.2         40.5
+    ## 3      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126    126.7         32.0
+    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133    181.2          9.8
+    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.2.2      TRUE       TRUE     149    224.2         16.1
+    ## 6      PIP-FUCCI PIP-FUCCI.tif     C4.1      TRUE       TRUE     103    237.3         20.2
+    ##   TrajectoryTime Directionality AverageSpeed
+    ## 1            610          0.156        0.292
+    ## 2            560          0.319        0.227
+    ## 3            625          0.253        0.203
+    ## 4            660          0.054        0.275
+    ## 5            740          0.072        0.303
+    ## 6            510          0.085        0.465
 
 ``` r
 dim(df)
@@ -312,20 +312,20 @@ df <- read.csv(file.path(path, "PIP-FUCCI All Cells_Results.csv"))
 head(df)
 ```
 
-    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages
-    ## 1      PIP-FUCCI PIP-FUCCI.tif       C1      TRUE      FALSE     182
-    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55
-    ## 3      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45
-    ## 4      PIP-FUCCI PIP-FUCCI.tif       C2     FALSE      FALSE     425
-    ## 5      PIP-FUCCI PIP-FUCCI.tif       C3      TRUE      FALSE      32
-    ## 6      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123
-    ##   Distance Displacement TrajectoryTime Directionality AverageSpeed
-    ## 1    202.9         27.6            905          0.136        0.224
-    ## 2     82.2          7.4            270          0.089        0.304
-    ## 3     74.2          7.8            220          0.106        0.337
-    ## 4    627.1         10.6           2120          0.017        0.296
-    ## 5     78.0         22.9            155          0.294        0.503
-    ## 6    178.1         27.7            610          0.156        0.292
+    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement
+    ## 1      PIP-FUCCI PIP-FUCCI.tif       C1      TRUE      FALSE     182    202.9         27.6
+    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55     82.2          7.4
+    ## 3      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45     74.2          7.8
+    ## 4      PIP-FUCCI PIP-FUCCI.tif       C2     FALSE      FALSE     425    627.1         10.6
+    ## 5      PIP-FUCCI PIP-FUCCI.tif       C3      TRUE      FALSE      32     78.0         22.9
+    ## 6      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7
+    ##   TrajectoryTime Directionality AverageSpeed
+    ## 1            905          0.136        0.224
+    ## 2            270          0.089        0.304
+    ## 3            220          0.106        0.337
+    ## 4           2120          0.017        0.296
+    ## 5            155          0.294        0.503
+    ## 6            610          0.156        0.292
 
 ``` r
 dim(df)
@@ -358,7 +358,7 @@ length(DFFF)
 DFF <- DFFF
 TT <- c() # to be used for showing the edge length
 for (i in 1:length(DFFF)) {
-    TT <-c(TT, df[which(df[, 3] == DF[i, 1]), 6])
+    TT <- c(TT, df[which(df[, 3] == DF[i, 1]), 6])
 }
 for (j in 1:length(DFF)) {
     parents <- c()
@@ -372,7 +372,7 @@ for (j in 1:length(DFF)) {
         }
     }
     d <- tibble(Offspring, parents)
-    d2 <- data.frame(from <- d$parents, to=d$Offspring)
+    d2 <- data.frame(from=d$parents, to=d$Offspring)
 
     g <- graph_from_data_frame(d2)
     ordered.vertices <- get.data.frame(g, what="vertices")
@@ -399,40 +399,41 @@ for (j in 1:length(DFF)) {
 }
 ```
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
 Plots can be generated and saved to the user’s working directory with
+the following code (not executed here for brevity):
 
 ``` r
 pdf(paste0(j, ".plot.pdf"))
@@ -503,8 +504,8 @@ TTT <- TT / TT[which.max(TT)]
 E(g)$weight <- TTT
 ```
 
-    ## Warning in eattrs[[name]][index] <- value: number of items to replace is
-    ## not a multiple of replacement length
+    ## Warning in eattrs[[name]][index] <- value: number of items to replace is not a multiple of
+    ## replacement length
 
 ``` r
 set.seed(100)
@@ -569,20 +570,20 @@ dim(dcells)
 head(dcells)
 ```
 
-    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages
-    ## 1      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55
-    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45
-    ## 3      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123
-    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133
-    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113
-    ## 6      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126
-    ##   Distance Displacement TrajectoryTime Directionality AverageSpeed
-    ## 1     82.2          7.4            270          0.089        0.304
-    ## 2     74.2          7.8            220          0.106        0.337
-    ## 3    178.1         27.7            610          0.156        0.292
-    ## 4    181.2          9.8            660          0.054        0.275
-    ## 5    127.2         40.5            560          0.319        0.227
-    ## 6    126.7         32.0            625          0.253        0.203
+    ##   ExperimentName  TiffFileName CellName isDivided isDaughter nImages Distance Displacement
+    ## 1      PIP-FUCCI PIP-FUCCI.tif     C1.1     FALSE       TRUE      55     82.2          7.4
+    ## 2      PIP-FUCCI PIP-FUCCI.tif     C1.2     FALSE       TRUE      45     74.2          7.8
+    ## 3      PIP-FUCCI PIP-FUCCI.tif     C3.1      TRUE       TRUE     123    178.1         27.7
+    ## 4      PIP-FUCCI PIP-FUCCI.tif     C3.2      TRUE       TRUE     133    181.2          9.8
+    ## 5      PIP-FUCCI PIP-FUCCI.tif   C3.1.1      TRUE       TRUE     113    127.2         40.5
+    ## 6      PIP-FUCCI PIP-FUCCI.tif   C3.1.2      TRUE       TRUE     126    126.7         32.0
+    ##   TrajectoryTime Directionality AverageSpeed
+    ## 1            270          0.089        0.304
+    ## 2            220          0.106        0.337
+    ## 3            610          0.156        0.292
+    ## 4            660          0.054        0.275
+    ## 5            560          0.319        0.227
+    ## 6            625          0.253        0.203
 
 ``` r
 firstDC <- c() # selecting first DCell
