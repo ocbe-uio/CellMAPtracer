@@ -257,7 +257,7 @@ for (j in 1:length(DFF)) {
 		}
 	}
 	co <- layout.reingold.tilford(g, flip.y <- TRUE)
-	par(mar=c(0,0,0,0)+.1)
+	par(mar = c(0, 0, 0, 0) + .1)
 	plot(
 		g, layout=co,edge.arrow.size=1.5, vertex.shape="circle", vertex.size=26,
 		vertex.color=COLOR, vertex.label.cex=0.8, vertex.label.font=2,
@@ -317,204 +317,216 @@ plot(
 )
 ```
 
-###########################################################################################################
-################### Sction # 3: Generation plot for all the data
-###########################################################################################################
+# Section 3: Generation plot for all the data
 
+## Loading the data after converting each file into csv
 
-
-#################### Loading the data after converting each file into csv
-df1<- read.table(file.choose(),sep=",",header=T)     #### A3_1_Feb12 All Cells.csv
-df2<- read.table(file.choose(),sep=",",header=T)     #### A3_2_Feb12 All Cells.csv
-df3<- read.table(file.choose(),sep=",",header=T)     #### C10_2_Feb12 All Cells_Results.csv
-df<-rbind(df1,df2,df3)
+```{r}
+df1 <- read.csv(file.path(path, "A3_1_Feb12 All Cells.csv"))
+df2 <- read.csv(file.path(path, "A3_2_Feb12 All Cells.csv"))
+df3 <- read.csv(file.path(path, "C10_2_Feb12 All Cells_Results.csv"))
+df <- rbind(df1, df2, df3)
 head(df)
 dim(df)
-mothers<-c()
-first<-c()
-second<-c()
-third<-c()
-fourth<-c()
-for (i in 1:length(df[,1])){
-	st<-strsplit(df[i,3], regex("\\.", multiline = TRUE))
-	L=length(st[[1]])-1
-	if (L==0){mothers=c(mothers,L)}
-	if (L==1){first=c(first,L)}
-	if (L==2){second=c(second,L)}
-	if (L==3){third=c(third,L)}
-	if (L==4){fourth=c(fourth,L)}
+mothers <- c()
+first <- c()
+second <- c()
+third <- c()
+fourth <- c()
+for (i in 1:length(df[, 1])) {
+	st <- strsplit(df[i, 3], regex("\\.", multiline=TRUE))
+	L <- length(st[[1]]) - 1
+	if (L == 0) mothers <- c(mothers, L)
+	if (L == 1) first <- c(first, L)
+	if (L == 2) second <- c(second, L)
+	if (L == 3) third <- c(third, L)
+	if (L == 4) fourth <- c(fourth, L)
 }
-generations=c(length(third),length(second),length(first),length(mothers))
-barplot(generations,horiz=T,col=c("bisque1","bisque2","bisque3","bisque4"),xlab="Number of cells",xlim=c(0,275))
+generations <- c(length(third), length(second), length(first), length(mothers))
+barplot(
+	generations, horiz=TRUE, col=c("bisque1","bisque2","bisque3","bisque4"),
+	xlab="Number of cells", xlim=c(0, 275)
+)
 box()
-#####################################################################################################
+```
 
+# Section 4: Heterogeneity between daughter cells
 
+## Loading the data after converting each file into csv
 
+```{r}
+df1 <- read.csv(file.path(path, "A3_1_Feb12 Daughter Cells.csv")
+```
 
+## twining the daughter cells in df1
 
-
-
-
-
-
-
-
-
-
-
-
-###########################################################################################################
-################### Sction # 4: Heterogeneity between daughter cells
-###########################################################################################################
-
-
-################# Loading the data after converting each file into csv
-df1<- read.table(file.choose(),sep=",",header=T)     #### A3_1_Feb12 Daughter Cells.csv
-
-##### twining the daughter cells in df1
-implode <- function(..., sep='') {
-     paste(..., collapse=sep)
-}
-newDF1<-data.frame()
-for (i in 1: length(df1[,1])){
-	w<-strsplit(df1[i,3], "")
-	ww<-w[[1]][length(w[[1]])]
-	ww<-as.numeric(w[[1]][length(w[[1]])])
-	if (ww==1){
-		w[[1]][length(w[[1]])]<-2
-		se<-implode(w[[1]])
-		wh<-which(df1[,3]==paste0(se))
-		if (length(wh)>0){
-			newDF1<-rbind(newDF1,df1[i,],df1[wh,])
+```{r}
+implode <- function(..., sep='') paste(..., collapse=sep)
+newDF1 <- data.frame()
+for (i in 1:length(df1[, 1])) {
+	w <- strsplit(df1[i, 3], "")
+	ww <- w[[1]][length(w[[1]])]
+	ww <- as.numeric(w[[1]][length(w[[1]])])
+	if (ww == 1) {
+		w[[1]][length(w[[1]])] <- 2
+		se <- implode(w[[1]])
+		wh <- which(df1[, 3] == paste0(se))
+		if (length(wh) > 0){
+			newDF1 <- rbind(newDF1, df1[i, ], df1[wh, ])
 		}
 	}
 }
+```
 
+## twining the daughter cells in df2
 
-df2<- read.table(file.choose(),sep=",",header=T)     #### A3_2_Feb12 Daughter Cells.csv
-##### twining the daughter cells in df2
+```{r}
+df2 <-  read.csv(file.path(path, "A3_2_Feb12 Daughter Cells.csv"))
 implode <- function(..., sep='') {
-     paste(..., collapse=sep)
+	paste(..., collapse=sep)
 }
-newDF2<-data.frame()
-for (i in 1: length(df2[,1])){
-	w<-strsplit(df2[i,3], "")
-	ww<-w[[1]][length(w[[1]])]
-	ww<-as.numeric(w[[1]][length(w[[1]])])
-	if (ww==1){
-		w[[1]][length(w[[1]])]<-2
-		se<-implode(w[[1]])
-		wh<-which(df2[,3]==paste0(se))
-		if (length(wh)>0){
-			newDF2<-rbind(newDF2,df2[i,],df2[wh,])
+newDF2 <- data.frame()
+for (i in 1:length(df2[, 1])) {
+	w <- strsplit(df2[i, 3], "")
+	ww <- w[[1]][length(w[[1]])]
+	ww <- as.numeric(w[[1]][length(w[[1]])])
+	if (ww == 1) {
+		w[[1]][length(w[[1]])] <- 2
+		se <- implode(w[[1]])
+		wh <- which(df2[, 3] == paste0(se))
+		if (length(wh) > 0) {
+			newDF2 <- rbind(newDF2, df2[i, ], df2[wh, ])
 		}
 	}
 }
+```
 
+## twining the daughter cells in df3
 
-
-df3<- read.table(file.choose(),sep=",",header=T)     #### C10_2_Feb12 Daughter Cells.csv
-##### twining the daughter cells in df3
-implode <- function(..., sep='') {
-     paste(..., collapse=sep)
-}
-newDF3<-data.frame()
-for (i in 1: length(df3[,1])){
-	w<-strsplit(df3[i,3], "")
-	ww<-w[[1]][length(w[[1]])]
-	ww<-as.numeric(w[[1]][length(w[[1]])])
-	if (ww==1){
-		w[[1]][length(w[[1]])]<-2
-		se<-implode(w[[1]])
-		wh<-which(df3[,3]==paste0(se))
-		if (length(wh)>0){
-			newDF3<-rbind(newDF3,df3[i,],df3[wh,])
+```{r}
+df3 <- read.csv(file.path(path, "C10_2_Feb12 Daughter Cells.csv")
+newDF3 <- data.frame()
+for (i in 1:length(df3[, 1])) {
+	w <- strsplit(df3[i, 3], "")
+	ww <- w[[1]][length(w[[1]])]
+	ww <- as.numeric(w[[1]][length(w[[1]])])
+	if (ww == 1) {
+		w[[1]][length(w[[1]])] <- 2
+		se <- implode(w[[1]])
+		wh <- which(df3[, 3] == paste0(se))
+		if (length(wh) > 0) {
+			newDF3 <- rbind(newDF3, df3[i, ], df3[wh, ])
 		}
 	}
 }
-
-dcells<-rbind(newDF1,newDF2,newDF3)
+dcells <- rbind(newDF1, newDF2, newDF3)
 head(dcells)
 dim(dcells)
-firstDC<-c()     # selecting the first DCell
-num=c(1:length(dcells[,1]))
-for (k in num){
+firstDC <- c() # selecting the first DCell
+num <- c(1:length(dcells[, 1]))
+for (k in num) {
 	if(!(k %% 2) == 0) {
-		firstDC=c(firstDC,k)
+		firstDC <- c(firstDC, k)
 	}
 }
+sdDiff <- 18 # no trajectory time difference larger than 3 hours between the two daughter cells
+minStep <- 60 # minimum trajectory time of 10 hours
+selectedrows <- c()
+for (i in firstDC) {
+	condition1 <-abs(dcells[i, 6] - dcells[i + 1, 6]) <= sdDiff
+	condition2 <- dcells[i, 6]>= minStep
+	condition3 <- dcells[i + 1, 6]>= minStep
+	if (condition1 & condition2 & condition3) {
+		selectedrows <- c(selectedrows, i)
+	}
+}
+Fselectedrows <- c(selectedrows, (selectedrows + 1)) # including the other cell
+Fselectedrows <- sort(Fselectedrows)
+Fdcells <- dcells[Fselectedrows, ]
+diffDC <- dcells[selectedrows, ]
+for (i in selectedrows) {
+	diffDC[which(selectedrows %in% i), 5:11] <- abs(
+		dcells[i, 5:11] - dcells[i + 1, 5:11]
+	)
+}
+```
 
-sdDiff=18                   #### no trajectory time difference larger than 3 hours between the two daughter cells
-minStep=60                  #### minimum trajectory time of 10 hours
-selectedrows=c()
-for (i in firstDC){
-	if (abs(dcells[i,6]-dcells[i+1,6])<=sdDiff & dcells[i,6]>= minStep & dcells[i+1,6]>= minStep){
-		selectedrows=c(selectedrows,i)
-	}
-}
-Fselectedrows=c(selectedrows,(selectedrows+1))   ##########  including the other cell
-Fselectedrows=sort(Fselectedrows)
-Fdcells=dcells[Fselectedrows,]
-diffDC<-dcells[selectedrows,]
-for (i in selectedrows){
-	diffDC[which(selectedrows %in% i),5:11]<-abs(dcells[i,5:11]-dcells[i+1,5:11])
-}
-length(diffDC[,1])         ##############  Number of pairs of daughter cells included in the analysis
-summary(diffDC[,11]*60)    ## speed difference
-summary(diffDC[,7])        ## total distance difference
-summary(diffDC[,10]*100)   ## directionality difference (%)
-summary(diffDC[,8])        ## displacement difference
+## Number of pairs of daughter cells included in the analysis
+
+```{r}
+length(diffDC[, 1])
+summary(diffDC[, 11] * 60)    ## speed difference
+summary(diffDC[, 7])          ## total distance difference
+summary(diffDC[, 10] * 100)   ## directionality difference (%)
+summary(diffDC[, 8])          ## displacement difference
 par(mfrow=c(1,4))
-boxplot(diffDC[,11]*60, ylab="Average Speed difference (um/h)",cex.lab=1.2, cex.axis=1.2,col="yellow",ylim=c(0,10))
-boxplot(diffDC[,10]*100, ylab="Directionality difference (%)",cex.lab=1.2, cex.axis=1.2,col="lightgreen",ylim=c(0,40))
-boxplot(diffDC[,7],ylab="Total Distance difference (um)",cex.lab=1.2, cex.axis=1.2,col="lightblue",ylim=c(0,200))
-boxplot(diffDC[,8], ylab="Displacement difference (um)",cex.lab=1.2, cex.axis=1.2,col="blue",ylim=c(0,200))
+boxplot(
+	diffDC[, 11] * 60, ylab="Average Speed difference (um/h)", cex.lab=1.2,
+	cex.axis=1.2, col="yellow", ylim=c(0, 10)
+)
+boxplot(
+	diffDC[, 10] * 100, ylab="Directionality difference (%)", cex.lab=1.2,
+	cex.axis=1.2, col="lightgreen", ylim=c(0, 40)
+)
+boxplot(
+	diffDC[, 7], ylab="Total Distance difference (um)", cex.lab=1.2,
+	cex.axis=1.2, col="lightblue", ylim=c(0, 200)
+)
+boxplot(
+	diffDC[,8], ylab="Displacement difference (um)", cex.lab=1.2, cex.axis=1.2,
+	col="blue", ylim=c(0, 200)
+)
+```
 
+## Computing the Time Diffrence between divisions of BT549 daughter cells
 
-
-########## Computing the Time Diffrence between divisions of BT549 daughter cells
-TimeDifferences=c()
-for (i in firstDC){
-	if (dcells[i,4]==TRUE & dcells[i+1,4]==TRUE){
-		h=abs(dcells[i,9]-dcells[i+1,9])
-		TimeDifferences=c(TimeDifferences,h)
+```{r}
+TimeDifferences <- c()
+for (i in firstDC) {
+	if (dcells[i, 4] == TRUE & dcells[i + 1, 4] == TRUE) {
+		h <- abs(dcells[i, 9] - dcells[i + 1, 9])
+		TimeDifferences <- c(TimeDifferences, h)
 	}
 }
-length(TimeDifferences)    ##############  Number of pairs of daughter cells included in the analysis
+length(TimeDifferences) # pairs of daughter cells included in the analysis
+summary(TimeDifferences / 60)
+sd(TimeDifferences / 60)
+```
 
+## Computing the mode
 
-summary(TimeDifferences/60)
-sd(TimeDifferences/60)
-# Computing the mode
+```{r}
 getmode <- function(v) {
-   uniqv <- unique(v)
-   uniqv[which.max(tabulate(match(v, uniqv)))]
+	uniqv <- unique(v)
+	uniqv[which.max(tabulate(match(v, uniqv)))]
 }
 result <- getmode(TimeDifferences)
 print(result)
+```
 
 ## Boxplot
-boxplot(TimeDifferences/60, ylab="Time difference between the division of daughter cells (h)",
-cex.lab=1.2, cex.axis=1.2,col="gray",ylim=c(0,40),las=1)
+
+```{r}
+boxplot(
+	TimeDifferences / 60,
+	ylab="Time difference between the division of daughter cells (h)",
+	cex.lab=1.2, cex.axis=1.2, col="gray", ylim=c(0, 40), las=1
+)
+```
+
 ## Violin plot
-TD=TimeDifferences/60
-Group= c(rep(1,length(TD)))
-Da<-data.frame(TD,Group)
+
+```{r}
+TD <- TimeDifferences / 60
+Group <- c(rep(1, length(TD)))
+Da <- data.frame(TD, Group)
 data_summary <- function(x) {
-   m <- mean(x)
-   ymin <- m-sd(x)
-   ymax <- m+sd(x)
-   return(c(y=m,ymin=ymin,ymax=ymax))
+	m <- mean(x)
+	ymin <- m - sd(x)
+	ymax <- m + sd(x)
+	return(c(y=m, ymin=ymin, ymax=ymax))
 }
 p <- ggplot(Da, aes(x=Group, y=TD)) +
-    geom_violin(trim=FALSE,fill="gray")+ geom_point(size=2.5,color="black")
-p + stat_summary(fun.data=data_summary,geom="pointrange", color="red",size = 1)
-###################################################################################################
-
-
-
-
-
-
-
+	geom_violin(trim=FALSE, fill="gray") + geom_point(size=2.5, color="black")
+p + stat_summary(fun.data=data_summary,geom ="pointrange", color="red", size=1)
+```
