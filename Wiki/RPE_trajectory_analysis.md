@@ -142,7 +142,7 @@ legend(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 Characterizing the trajectory movement of a population of Dividing Daughter cells
 ---------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ p <- ggplot(Da, aes(x=Group, y=Directionality)) +
 p + stat_summary(fun.data=data_summary, geom="pointrange", color="red", size=1)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ### Speed
 
@@ -188,7 +188,7 @@ p <- ggplot(Da, aes(x=Group, y=Average_Speed)) +
 p + stat_summary(fun.data=data_summary, geom="pointrange", color="red", size=1)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 ### Correlation Analysis
 
@@ -227,7 +227,7 @@ text(18, 1875, "r = 0.62", cex=1.5)
 text(19, 1750, "P < 0.001", cex=1.5)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 #### Finding the correlation between doubling time and Directionality
 
@@ -263,7 +263,7 @@ text(19, 0.65, "r = -0.14", cex=1)
 text(19.4, 0.6, "P = 0.057", cex=1)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 #### Finding the correlation between doubling time and Average Speed
 
@@ -299,7 +299,7 @@ text(40.1, 60, "r = -0.12", cex=1)
 text(40, 57, "P = 0.1", cex=1)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 Section 2: Plotting the lineage tree
 ====================================
@@ -482,7 +482,7 @@ plot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/lineage-tree-2-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/lineage-tree-2-1.png)<!-- -->
 
 Section 3: Generation plot for all the data
 ===========================================
@@ -630,7 +630,7 @@ boxplot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 Computing the Time Diffrence between divisions of RPE daughter cells
 --------------------------------------------------------------------
@@ -703,7 +703,7 @@ p <- ggplot(Da, aes(x=Group, y=TD)) +
 p + stat_summary(fun.data=data_summary, geom="pointrange", color="red", size=1)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 Section 5: Changes across cell cycle phases
 ===========================================
@@ -971,7 +971,7 @@ axis(1, at=c(1, 2,3), labels=c('G1', "S", "G2"))
 axis(2, at =30, pos=-0.45, tck=0, labels='Average Instantaneous Speeds (um/h)')
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 
 ### Boxplot
 
@@ -987,7 +987,7 @@ boxplot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
 
 ### Barplot
 
@@ -1011,7 +1011,7 @@ segments(pp - 0.1, yy + std1, pp + 0.1, yy + std1)
 box()
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
 
 Pairwise comparisons using Wilcoxon rank sum test with continuity correction
 ----------------------------------------------------------------------------
@@ -1139,7 +1139,7 @@ boxplot(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
 
 #### Barplot
 
@@ -1162,7 +1162,7 @@ segments(pp - 0.1, yy + std1, pp + 0.1, yy + std1)
 box()
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
 
 Pairwise comparisons using Wilcoxon rank sum test with continuity correction
 ----------------------------------------------------------------------------
@@ -1304,7 +1304,7 @@ add_legend(
 )
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
 
 JUMP
 ----
@@ -1427,7 +1427,7 @@ yy <- c(-12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0)
 axis(1, at=xx, labels=yy, col.axis="black", las=1, cex.axis=0.73)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
 
 Plotting tbe mean speed across the cell cycle phases for cells without a jump
 -----------------------------------------------------------------------------
@@ -1521,4 +1521,4 @@ yy <- c(-12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0)
 axis(1, at=xx, labels=yy, col.axis="black", las=1, cex.axis=0.73)
 ```
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/master/Wiki/RPE_trajectory_analysis_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
