@@ -1,6 +1,5 @@
 ---
 title: BT549 Cells
-toc: true
 ---
 
 # Needed packages

@@ -1,4 +1,13 @@
-
+-   [Needed packages](#needed-packages)
+-   [Needed data](#needed-data)
+-   [Section 1: Studying Dividing Daughter
+    Cells](#section-1-studying-dividing-daughter-cells)
+-   [Section 2: Plotting the lineage
+    tree](#section-2-plotting-the-lineage-tree)
+-   [Section 3: Generation plot for all the
+    data](#section-3-generation-plot-for-all-the-data)
+-   [Section 4: Heterogeneity between daughter
+    cells](#section-4-heterogeneity-between-daughter-cells)
 
 Needed packages
 ===============
@@ -39,20 +48,20 @@ df <- rbind(df1, df2, df3)
 head(df)
 ```
 
-    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime
-    ## 1          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145    375.9        155.4           1440
-    ## 2          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182    631.8         36.8           1810
-    ## 3          Feb12 A3_1_Feb12.tif     C7.1      TRUE       TRUE     219    462.8          5.1           2180
-    ## 4          Feb12 A3_1_Feb12.tif     C7.2      TRUE       TRUE     212    472.0         64.7           2110
-    ## 5          Feb12 A3_1_Feb12.tif     C9.1      TRUE       TRUE     149    460.1         55.5           1480
-    ## 6          Feb12 A3_1_Feb12.tif     C9.2      TRUE       TRUE     170    565.6        131.5           1690
-    ##   Directionality AverageSpeed
-    ## 1          0.413        0.261
-    ## 2          0.058        0.349
-    ## 3          0.011        0.212
-    ## 4          0.137        0.224
-    ## 5          0.121        0.311
-    ## 6          0.232        0.335
+    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages
+    ## 1          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145
+    ## 2          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182
+    ## 3          Feb12 A3_1_Feb12.tif     C7.1      TRUE       TRUE     219
+    ## 4          Feb12 A3_1_Feb12.tif     C7.2      TRUE       TRUE     212
+    ## 5          Feb12 A3_1_Feb12.tif     C9.1      TRUE       TRUE     149
+    ## 6          Feb12 A3_1_Feb12.tif     C9.2      TRUE       TRUE     170
+    ##   Distance Displacement TrajectoryTime Directionality AverageSpeed
+    ## 1    375.9        155.4           1440          0.413        0.261
+    ## 2    631.8         36.8           1810          0.058        0.349
+    ## 3    462.8          5.1           2180          0.011        0.212
+    ## 4    472.0         64.7           2110          0.137        0.224
+    ## 5    460.1         55.5           1480          0.121        0.311
+    ## 6    565.6        131.5           1690          0.232        0.335
 
 ``` r
 dim(df)
@@ -463,20 +472,20 @@ df <- rbind(df1, df2, df3)
 head(df)
 ```
 
-    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime
-    ## 1          Feb12 A3_1_Feb12.tif       C1      TRUE      FALSE     100    353.7         50.6            990
-    ## 2          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145    375.9        155.4           1440
-    ## 3          Feb12 A3_1_Feb12.tif   C1.1.1     FALSE       TRUE     188    590.9        141.6           1870
-    ## 4          Feb12 A3_1_Feb12.tif   C1.1.2     FALSE       TRUE     188    516.2         71.9           1870
-    ## 5          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182    631.8         36.8           1810
-    ## 6          Feb12 A3_1_Feb12.tif   C1.2.1     FALSE       TRUE     151    455.3        110.9           1500
-    ##   Directionality AverageSpeed
-    ## 1          0.143        0.357
-    ## 2          0.413        0.261
-    ## 3          0.240        0.316
-    ## 4          0.139        0.276
-    ## 5          0.058        0.349
-    ## 6          0.243        0.304
+    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages
+    ## 1          Feb12 A3_1_Feb12.tif       C1      TRUE      FALSE     100
+    ## 2          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145
+    ## 3          Feb12 A3_1_Feb12.tif   C1.1.1     FALSE       TRUE     188
+    ## 4          Feb12 A3_1_Feb12.tif   C1.1.2     FALSE       TRUE     188
+    ## 5          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182
+    ## 6          Feb12 A3_1_Feb12.tif   C1.2.1     FALSE       TRUE     151
+    ##   Distance Displacement TrajectoryTime Directionality AverageSpeed
+    ## 1    353.7         50.6            990          0.143        0.357
+    ## 2    375.9        155.4           1440          0.413        0.261
+    ## 3    590.9        141.6           1870          0.240        0.316
+    ## 4    516.2         71.9           1870          0.139        0.276
+    ## 5    631.8         36.8           1810          0.058        0.349
+    ## 6    455.3        110.9           1500          0.243        0.304
 
 ``` r
 dim(df)
@@ -587,20 +596,20 @@ dcells <- rbind(newDF1, newDF2, newDF3)
 head(dcells)
 ```
 
-    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages Distance Displacement TrajectoryTime
-    ## 1          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145    375.9        155.4           1440
-    ## 2          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182    631.8         36.8           1810
-    ## 3          Feb12 A3_1_Feb12.tif     C7.1      TRUE       TRUE     219    462.8          5.1           2180
-    ## 4          Feb12 A3_1_Feb12.tif     C7.2      TRUE       TRUE     212    472.0         64.7           2110
-    ## 5          Feb12 A3_1_Feb12.tif     C9.1      TRUE       TRUE     149    460.1         55.5           1480
-    ## 6          Feb12 A3_1_Feb12.tif     C9.2      TRUE       TRUE     170    565.6        131.5           1690
-    ##   Directionality AverageSpeed
-    ## 1          0.413        0.261
-    ## 2          0.058        0.349
-    ## 3          0.011        0.212
-    ## 4          0.137        0.224
-    ## 5          0.121        0.311
-    ## 6          0.232        0.335
+    ##   ExperimentName   TiffFileName CellName isDivided isDaughter nImages
+    ## 1          Feb12 A3_1_Feb12.tif     C1.1      TRUE       TRUE     145
+    ## 2          Feb12 A3_1_Feb12.tif     C1.2      TRUE       TRUE     182
+    ## 3          Feb12 A3_1_Feb12.tif     C7.1      TRUE       TRUE     219
+    ## 4          Feb12 A3_1_Feb12.tif     C7.2      TRUE       TRUE     212
+    ## 5          Feb12 A3_1_Feb12.tif     C9.1      TRUE       TRUE     149
+    ## 6          Feb12 A3_1_Feb12.tif     C9.2      TRUE       TRUE     170
+    ##   Distance Displacement TrajectoryTime Directionality AverageSpeed
+    ## 1    375.9        155.4           1440          0.413        0.261
+    ## 2    631.8         36.8           1810          0.058        0.349
+    ## 3    462.8          5.1           2180          0.011        0.212
+    ## 4    472.0         64.7           2110          0.137        0.224
+    ## 5    460.1         55.5           1480          0.121        0.311
+    ## 6    565.6        131.5           1690          0.232        0.335
 
 ``` r
 dim(dcells)
