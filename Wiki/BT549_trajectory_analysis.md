@@ -325,56 +325,124 @@ Characterizing the trajectory movement of a population of Dividing Daughter BT54
 
 ![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
-########################################################################################################### 
+Section 2: Plotting the lineage tree
+====================================
 
-################### Sction \# 2: Plotting the lineage tree
+Loading the data, we use here all cells from one tiff file data
+---------------------------------------------------------------
 
-########################################################################################################### 
+    df <- read.csv(file.path(path, "C10_2_Feb12 All Cells_Results.csv"))
 
-############################## Loading the data, we use here all cells from one tiff file data
+Plotting the lineage tree of each cell and its descendants
+----------------------------------------------------------
 
-df&lt;- read.table(file.choose(),sep=“,”,header=T) \#\#\#\#
-C10\_2\_Feb12 All Cells\_Results.csv
+    DF <- df
+    ID <- DF[, 3]
+    SS <- sub("*\\..*", "", unlist(ID))
+    DF <- data.frame(ID, SS)
+    DFF <- split(DF[, 1], DF[, 2])
+    DFFF <- DFF
+    for (j in 1:length(DFF)) {
+        if (length(DFF[[j]]) < 2){
+            DFFF[j] <- NULL
+        }
+    }
+    length(DFFF)
 
-############ Plotting the lineage tree of each cell and its descendants
+    ## [1] 32
 
-DF=df ID&lt;-DF\[,3\] SS&lt;-sub(“*\\..*”, "“, unlist(ID))
-DF&lt;-data.frame(ID,SS) DFF&lt;-split(DF\[,1\],DF\[,2\]) DFFF&lt;-DFF
-for (j in 1: length(DFF)){ if (length(DFF\[\[j\]\])&lt;2){
-DFFF\[j\]&lt;-NULL } } length(DFFF) DFF=DFFF for (j in 1: length(DFF)){
-parents&lt;-c() Offspring&lt;-c() col=c()
-test&lt;-sub(”*\\..d*$", "", unlist(DFF\[\[j\]\]))  for (i in 1:length(test)){  if (!test\[i\]==DFF\[\[j\]\]\[i\]){  parents&lt;-c(parents,test\[i\])  Offspring&lt;-c(Offspring,DFF\[\[j\]\]\[i\])  }  }  d = tibble(Offspring,parents)  d2 = data.frame(from=d$parents,
-to=d$Offspring) g=graph\_from\_data\_frame(d2) ordered.vertices
-&lt;-get.data.frame(g, what=“vertices”) for (n in 1: length(parents)){
-if (Offspring\[n\] %in% parents){ col=c(col,Offspring\[n\]) } }
-COLOR&lt;-c(rep(“gray”,length(ordered.vertices\[,1\]))) for (i in
-1:length(ordered.vertices\[,1\])){ if (ordered.vertices\[i,1\]%in% col){
-COLOR\[i\]=“lightgreen” } } co=layout.reingold.tilford(g, flip.y=T)
-pdf(paste0(j,“.plot.pdf”)) par(mar=c(0,0,0,0)+.1)
-plot(g,layout=co,edge.arrow.size=1.5,vertex.shape=“circle”,vertex.size=26,
-vertex.color=COLOR,vertex.label.cex=0.8,vertex.label.font=2,vertex.label.color=“black”)
-dev.off() }
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+    DFF <- DFFF
+    for (j in 1:length(DFF)) {
+        parents <- c()
+        Offspring <- c()
+        col <- c()
+        test <- sub("*\\..d*$", "", unlist(DFF[[j]]))
+        for (i in 1:length(test)){
+            if (!test[i] == DFF[[j]][i]) {
+                parents <- c(parents, test[i])
+                Offspring <- c(Offspring, DFF[[j]][i])
+            }
+        }
+        d <- tibble(Offspring, parents)
+        d2 <- data.frame(from=d$parents, to=d$Offspring)
+        g <- graph_from_data_frame(d2)
+        ordered.vertices <- get.data.frame(g, what="vertices")
+        for (n in 1:length(parents)) {
+            if (Offspring[n] %in% parents) {
+                col=c(col, Offspring[n])
+            }
+        }
+        COLOR <- c(rep("gray", length(ordered.vertices[, 1])))
+        for (i in 1:length(ordered.vertices[, 1])) {
+            if (ordered.vertices[i, 1] %in% col) {
+                COLOR[i] <- "lightgreen"
+            }
+        }
+        co <- layout.reingold.tilford(g, flip.y <- TRUE)
+        par(mar=c(0,0,0,0)+.1)
+        plot(
+            g, layout=co,edge.arrow.size=1.5, vertex.shape="circle", vertex.size=26,
+            vertex.color=COLOR, vertex.label.cex=0.8, vertex.label.font=2,
+            vertex.label.color="black"
+        )
+    }
 
-############ Plotting the lineage tree of a particular cell and its descendants
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-1.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-2.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-3.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-4.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-5.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-6.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-7.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-8.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-9.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-10.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-11.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-12.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-13.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-14.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-15.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-16.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-17.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-18.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-19.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-20.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-21.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-22.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-23.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-24.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-25.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-26.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-27.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-28.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-29.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-30.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-31.png)![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-12-32.png)
 
-DF=df ID&lt;-DF\[,3\] SS&lt;-sub(“*\\..*”, "“, unlist(ID))
-DF&lt;-data.frame(ID,SS) DFF&lt;-split(DF\[,1\],DF\[,2\]) DFFF&lt;-DFF
-for (j in 1: length(DFF)){ if (length(DFF\[\[j\]\])&lt;2){
-DFFF\[j\]&lt;-NULL } } length(DFFF) DFF=DFFF j=5 \#\#\#\#\#\# Changing
-this value will change the target cell and generat different lineage
-tree parents&lt;-c() Offspring&lt;-c() col=c()
-test&lt;-sub(”*\\..d*$", "", unlist(DFF\[\[j\]\])) for (i in 1:length(test)){  if (!test\[i\]==DFF\[\[j\]\]\[i\]){  parents&lt;-c(parents,test\[i\])  Offspring&lt;-c(Offspring,DFF\[\[j\]\]\[i\])  } } d = tibble(Offspring,parents) d2 = data.frame(from=d$parents,
-to=d$Offspring) g=graph\_from\_data\_frame(d2) ordered.vertices
-&lt;-get.data.frame(g, what=“vertices”) for (n in 1: length(parents)){
-if (Offspring\[n\] %in% parents){ col=c(col,Offspring\[n\]) } }
-COLOR&lt;-c(rep(“gray”,length(ordered.vertices\[,1\]))) for (i in
-1:length(ordered.vertices\[,1\])){ if (ordered.vertices\[i,1\]%in% col){
-COLOR\[i\]=“lightgreen” } } co=layout.reingold.tilford(g, flip.y=T)
-par(mar=c(0,0,0,0)+.1)
-plot(g,layout=co,edge.arrow.size=1.5,vertex.shape=“circle”,vertex.size=26,
-vertex.color=COLOR,vertex.label.cex=0.8,vertex.label.font=2,vertex.label.color=“black”)
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+Plotting the lineage tree of a particular cell and its descendants
+------------------------------------------------------------------
+
+    DF <- df
+    ID <- DF[, 3]
+    SS <- sub("*\\..*", "", unlist(ID))
+    DF <- data.frame(ID, SS)
+    DFF <- split(DF[, 1], DF[, 2])
+    DFFF <- DFF
+    for (j in 1:length(DFF)) {
+        if (length(DFF[[j]]) < 2) {
+            DFFF[j] <- NULL
+        }
+    }
+    length(DFFF)
+
+    ## [1] 32
+
+    DFF <- DFFF
+    j <- 5 # this changes the target cell and generat different lineage tree
+    parents <- c()
+    Offspring <- c()
+    col <- c()
+    test <- sub("*\\..d*$", "", unlist(DFF[[j]]))
+    for (i in 1:length(test)) {
+        if (!test[i] == DFF[[j]][i]) {
+            parents <- c(parents, test[i])
+            Offspring <- c(Offspring, DFF[[j]][i])
+        }
+    }
+    d <- tibble(Offspring,parents)
+    d2 <- data.frame(from=d$parents, to=d$Offspring)
+    g <- graph_from_data_frame(d2)
+    ordered.vertices <- get.data.frame(g, what="vertices")
+    for (n in 1:length(parents)) {
+        if (Offspring[n] %in% parents) {
+            col <- c(col,Offspring[n])
+        }
+    }
+    COLOR <- c(rep("gray", length(ordered.vertices[, 1])))
+    for (i in 1:length(ordered.vertices[, 1])) {
+        if (ordered.vertices[i, 1] %in% col) {
+            COLOR[i] <- "lightgreen"
+        }
+    }
+    co <- layout.reingold.tilford(g, flip.y=TRUE)
+    par(mar=c(0, 0, 0, 0) + .1)
+    plot(
+        g, layout=co,edge.arrow.size=1.5, vertex.shape="circle", vertex.size=26,
+        vertex.color=COLOR, vertex.label.cex=0.8, vertex.label.font=2,
+        vertex.label.color="black"
+    )
+
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-13-1.png)
 
 ########################################################################################################### 
 
