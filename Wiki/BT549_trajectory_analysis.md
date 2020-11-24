@@ -156,7 +156,7 @@ Plotting the density and the statistics.
         cex=0.65, merge=TRUE
     )
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/gBT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
 Characterizing the trajectory movement of a population of Dividing Daughter BT549 cells
 ---------------------------------------------------------------------------------------
@@ -194,7 +194,7 @@ Characterizing the trajectory movement of a population of Dividing Daughter BT54
     ## Warning: Computation failed in `stat_summary()`:
     ## could not find function "ssd"
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/gBT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
 ### Speed
 
@@ -223,7 +223,7 @@ Characterizing the trajectory movement of a population of Dividing Daughter BT54
         fun.data=data_summary, geom="pointrange", color="red", size = 1
     )
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/gBT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
 ### Correlation Analysis
 
@@ -258,7 +258,7 @@ Characterizing the trajectory movement of a population of Dividing Daughter BT54
     text(18, 1875, "r= 0.62",cex = 1.5)
     text(19, 1750, "P< 0.001",cex = 1.5)
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/gBT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
 #### Finding the correlation between doubling time and Directionality
 
@@ -291,7 +291,7 @@ Characterizing the trajectory movement of a population of Dividing Daughter BT54
     text(19, 0.65, "r= -0.14", cex=1)
     text(19.4, 0.6, "P= 0.057", cex=1)
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/gBT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
 #### Finding the correlation between doubling time and Average Speed
 
@@ -323,7 +323,7 @@ Characterizing the trajectory movement of a population of Dividing Daughter BT54
     text(40.1, 60, "r= -0.12",cex=1)
     text(40, 57, "P= 0.1",cex=1)
 
-![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/gBT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
 ########################################################################################################### 
 
