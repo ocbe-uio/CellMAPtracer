@@ -208,7 +208,7 @@ dim(df)
 
 ## Lineage tree of each cell and its descendants with edge length linked to time till cell division
 
-```{r}
+```{r lineage-tree, warning=FALSE}
 DF <- df
 ID <- DF[, 3]
 SS <- sub("*\\..*", "", unlist(ID))
@@ -282,7 +282,7 @@ dev.off()
 
 ## Plotting the lineage tree of a particular cell and its descendants
 
-```{r}
+```{r lineage-tree-2, warning=FALSE}
 DF <- df
 ID <- DF[, 3]
 SS <- sub("*\\..*", "", unlist(ID))
