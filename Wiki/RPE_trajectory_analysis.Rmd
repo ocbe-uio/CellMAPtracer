@@ -266,7 +266,7 @@ for (j in 1:length(DFF)) {
 }
 ```
 
-Plots can be generated and saved to the user's working directory with
+Plots can be generated and saved to the user's working directory with the following code (not executed here for brevity):
 
 ```{r eval=FALSE}
 pdf(paste0(j, ".plot.pdf"))
