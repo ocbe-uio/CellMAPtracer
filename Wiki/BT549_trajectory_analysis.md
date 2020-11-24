@@ -172,7 +172,7 @@ Da <- data.frame(Directionality, Group)
 ``` r
 data_summary <- function(x) {
     m <- mean(x)
-    ymin <- m -ssd(x)
+    ymin <- m - sd(x)
     ymax <- m + sd(x)
     return(c(y=m, ymin=ymin, ymax=ymax))
 }
@@ -183,9 +183,6 @@ p + stat_summary(
     fun.data=data_summary, geom="pointrange", color="red", size = 1
 )
 ```
-
-    ## Warning: Computation failed in `stat_summary()`:
-    ## could not find function "ssd"
 
 ![](https://raw.githubusercontent.com/ocbe-uio/CellMAPtracer/wiki/Wiki/BT549_trajectory_analysis_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
