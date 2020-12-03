@@ -22,7 +22,7 @@ function varargout = CellTracer_Main_GUI(varargin)
 
 % Edit the above text to modify the response to help CellTracer_Main_GUI
 
-% Last Modified by GUIDE v2.5 26-May-2020 12:05:20
+% Last Modified by GUIDE v2.5 03-Dec-2020 08:26:28
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -422,5 +422,12 @@ function table_description_pushbutton_Callback(hObject, eventdata, handles)
 % --- Executes on button press in Calculations_explanation_pushbutton.
 function Calculations_explanation_pushbutton_Callback(hObject, eventdata, handles)
 % hObject    handle to Calculations_explanation_pushbutton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in run_fucci_pushbutton.
+function run_fucci_pushbutton_Callback(hObject, eventdata, handles)
+% hObject    handle to run_fucci_pushbutton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
