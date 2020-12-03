@@ -87,10 +87,11 @@ CalculationResults = [];
 
 % ..run_fucci
   function run_fucci(varargin)
-    disp('Run Fucci')
-    AllTracks.SaveAsMat(Parameters, 'Fucci_test.mat')
-    MutlitiffFullPathName = [AllTracks.Metadata.TiffFullPath AllTracks.Metadata.TiffFileName];
-    run_CellMAPtracer_FUCCI(MutlitiffFullPathName, [pwd '/Fucci_test.mat']) 
+    M = MainWindow;
+%     disp('Run Fucci')
+%     AllTracks.SaveAsMat(Parameters, 'Fucci_test.mat')
+%     MutlitiffFullPathName = [AllTracks.Metadata.TiffFullPath AllTracks.Metadata.TiffFileName];
+%     run_CellMAPtracer_FUCCI(MutlitiffFullPathName, [pwd '/Fucci_test.mat']) 
   end
 
 % ..inspecttrack
