@@ -3,7 +3,8 @@ function CellMAPtracer_Main()
 % Loads CellTracer_Main_GUI figure and operates on handles from this GUI. 
 % CellTracer_Main()
 
-addpath('CellMAPtracer-FUCCI/')
+% Set paths to CellMAPtracer_FUCC:
+set_paths
 
 %% Load Graphic User Interface and set all callbacks
 gui_h = guidata(CellTracer_Main_GUI);
