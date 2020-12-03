@@ -85,12 +85,12 @@ CalculationResults = [];
     updlistbox([],[]), replot()
   end
 
-% ..run_fuccit
+% ..run_fucci
   function run_fucci(varargin)
     disp('Run Fucci')
     AllTracks.SaveAsMat(Parameters, 'Fucci_test.mat')
     MutlitiffFullPathName = [AllTracks.Metadata.TiffFullPath AllTracks.Metadata.TiffFileName];
-   git
+    run_CellMAPtracer_FUCCI(MutlitiffFullPathName, [pwd '/Fucci_test.mat']) 
   end
 
 % ..inspecttrack
