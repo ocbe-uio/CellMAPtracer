@@ -26,6 +26,7 @@ set(gui_h.rectangle_size_slider,  'BackgroundColor', backgroundColor);
 set(gui_h.CurrentTrackCellColorIndicatorText, 'BackgroundColor',backgroundColor)
 
 %% Pushbuttons
+set(gui_h.run_fucci_pushbutton,  'BackgroundColor', [0.93 0.69 0.13])
 set(gui_h.showCalculations,   'BackgroundColor', lightGreen);
 set(gui_h.ResetCalculations,  'BackgroundColor', lightGreen);
 set(gui_h.CurrentTrackCellColorIndicator , 'BackgroundColor', intenseRed);

@@ -3,10 +3,14 @@ function CellMAPtracer_Main()
 % Loads CellTracer_Main_GUI figure and operates on handles from this GUI. 
 % CellTracer_Main()
 
+% Set paths to CellMAPtracer_FUCC:
+set_paths
+
 %% Load Graphic User Interface and set all callbacks
 gui_h = guidata(CellTracer_Main_GUI);
 updateguicolors(gui_h)
 
+set(gui_h.run_fucci_pushbutton,         'Callback', @run_fucci)
 set(gui_h.inspect_track_pushbutton,     'Callback', @inspecttrack)
 % Note: exporting only XY position: (not used in current version)
 set(gui_h.Calculations_explanation_pushbutton, 'Callback', @showdisplacementexplanation)
@@ -79,6 +83,15 @@ CalculationResults = [];
     cellTracks = track_acrossallimages(AllImages,pos,CellTrackName);
     AllTracks.addNewTrackedCell(cellTracks);
     updlistbox([],[]), replot()
+  end
+
+% ..run_fucci
+  function run_fucci(varargin)
+    M = MainWindow;
+%     disp('Run Fucci')
+%     AllTracks.SaveAsMat(Parameters, 'Fucci_test.mat')
+%     MutlitiffFullPathName = [AllTracks.Metadata.TiffFullPath AllTracks.Metadata.TiffFileName];
+%     run_CellMAPtracer_FUCCI(MutlitiffFullPathName, [pwd '/Fucci_test.mat']) 
   end
 
 % ..inspecttrack
