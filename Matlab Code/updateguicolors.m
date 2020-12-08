@@ -13,6 +13,7 @@ set(gui_h.inspect_track_pushbutton,     'BackgroundColor', lightGreen);
 %% Background color
 backgroundColor = [1 1 1];
 %% Main panel
+set(gui_h.run_fucci_pushbutton,  'BackgroundColor', [0.93 0.69 0.13])
 set(gui_h.Cell_Tracer_MainFigure, 'Color',backgroundColor)
 % %% Cell Tracking panel 
 set(gui_h.ax,       'Color',            backgroundColor)
