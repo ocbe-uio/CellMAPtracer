@@ -16,3 +16,10 @@ To be able to run CellMAPtracer App within the MATLAB environment, users should 
 
 #### C) CellMAPtracer from the source MATLAB code
 To be able to run CellMAPtracer code, users should clone the CellMAPtracer repository from https://github.com/ocbe-uio/CellMAPtracer and then run “CellMAPtracer_Main.m” after opening a project in MATLAB.
+
+### Tracking single cells
+CellMAPtracer is capable of loading multi-TIFF stacks (8 and 16 bits) of spatio-temporal live cell images as input for tracking. The output is an interactive multi-generation trajectory plot and 5 categories of trajectory data. The 5 categories include: all cells, dividing cells, non-dividing cells, daughter cells and dividing daughter cells. Each of these contains two spreadsheets. The first sheet contains the measurements of cell migration parameters such as the total distance, displacement, directionality and speed. The second sheet contains the x-y coordinates of tracked cells in the corresponding category. 
+
+
+### CellMAPtracer FUCCI plug-in
+The CellMAPtracer FUCCI plug-in enables users to profile the fluorescent signals of FUCCI‐expressing cells in 2-3 channel systems. It detects the cell cycle phase at any given time point throughout the course of the tracking. The input of the FUCCI plug-in is a multi-TIFF stack in RGB format of spatio-temporal live cell images which should be associated with the outcome of the tracking outcome of CellMAPtracer for the corresponding multi-TIFF stacks (8 and 16 bits) (Supplementary Figure S4). After loading the needed files and selecting the cell cycle detection method, the FUCCI phase algorithm automatically implements an internal RGB normalization. Users can inspect the normalized and the raw signals and monitor the detection of the cell cycle phases with a possibility of correcting the detection. 
