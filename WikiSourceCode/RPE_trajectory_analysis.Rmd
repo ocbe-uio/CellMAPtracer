@@ -365,7 +365,32 @@ box()
 dcells <- read.csv(file.path(path, "PIP-FUCCI Daughter Cells_Results.csv"))
 dim(dcells)
 head(dcells)
+```
 
+
+## Twining the daughter cells and plotting the differences between daughter cells
+
+```{r}
+implode <- function(..., sep='') {
+     paste(..., collapse=sep)
+}
+newDF1<-data.frame()
+for (i in 1: length(dcells[,1])){
+	w<-strsplit(dcells[i,3], "")
+	ww<-w[[1]][length(w[[1]])]
+	ww<-as.numeric(w[[1]][length(w[[1]])])
+	if (ww==1){
+		w[[1]][length(w[[1]])]<-2
+		se<-implode(w[[1]])
+		wh<-which(dcells[,3]==paste0(se))
+		if (length(wh)>0){
+			newDF1<-rbind(newDF1,dcells[i,],dcells[wh,])
+		}
+	}
+}
+
+dcells<-newDF1
+head(dcells)
 firstDC <- c() # selecting first DCell
 num <- c(1:length(dcells[, 1]))
 for (k in num) {
@@ -374,8 +399,8 @@ for (k in num) {
 	}
 }
 
-sdDiff <- 15  # no trajectory time difference larger than 1.3 hours between the two daughter cells
-minStep <- 36 # minimum trajectory time of 3 hours
+sdDiff <- 15  # no trajectory time difference larger than 2.5 hours between the two daughter cells
+minStep <- 36 # minimum trajectory time of 6 hours
 
 selectedrows <- c()
 for (i in firstDC) {
@@ -420,31 +445,6 @@ boxplot(
 )
 ```
 
-## Twining the daughter cells in df1
-
-```{r}
-implode <- function(..., sep='') {
-     paste(..., collapse=sep)
-}
-newDF1<-data.frame()
-for (i in 1: length(dcells[,1])){
-	w<-strsplit(dcells[i,3], "")
-	ww<-w[[1]][length(w[[1]])]
-	ww<-as.numeric(w[[1]][length(w[[1]])])
-	if (ww==1){
-		w[[1]][length(w[[1]])]<-2
-		se<-implode(w[[1]])
-		wh<-which(dcells[,3]==paste0(se))
-		if (length(wh)>0){
-			newDF1<-rbind(newDF1,dcells[i,],dcells[wh,])
-		}
-	}
-}
-
-dcells<-newDF1
-head(dcells)
-```
-
 ## Computing the Time Diffrence between divisions of RPE daughter cells
 
 ```{r}
@@ -459,11 +459,6 @@ length(TimeDifferences) # pairs of daughter cells included in the analysis
 
 summary(TimeDifferences / 60)
 sd(TimeDifferences / 60)
-```
-
-## Computing the mode
-
-```{r}
 getmode <- function(v) {
 	uniqv <- unique(v)
 	uniqv[which.max(tabulate(match(v, uniqv)))]
