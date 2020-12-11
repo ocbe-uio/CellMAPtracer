@@ -33,7 +33,7 @@ library(vioplot)
 
 
 #################### Loading the data (PIP-FUCCI Dividing Daughter Cells.csv)
-df<- read.table(file.choose(),sep=",",header=T)
+df<- read.table(file.choose(),sep=",",header=T)     
 head(df)
 dim(df)
 
@@ -43,39 +43,34 @@ dim(df)
 TrajectoryTime<-df[,9]/60
 sd(TrajectoryTime)
 summary(TrajectoryTime)
-# Computing the mode
-getmode <- function(v) {
-   uniqv <- unique(v)
-   uniqv[which.max(tabulate(match(v, uniqv)))]
-}
-result <- getmode(TrajectoryTime)
-print(result)
 
 
-#################### Plotting the density of the doubling time
+#################### Plotting the density of the doubling time 
 x <- TrajectoryTime
 hx5 <- TrajectoryTime
 dens <- density(hx5, cut=10)
 n <- length(dens$y)                       #
-dx <- mean(diff(dens$x))                  # Typical spacing in x
-y.unit <- sum(dens$y) * dx                # Check: this should integrate to 1
+dx <- mean(diff(dens$x))                  # Typical spacing in x 
+y.unit <- sum(dens$y) * dx                # Check: this should integrate to 1 
 dx <- dx / y.unit                         # Make a minor adjustment
 x.mean <- sum(dens$y * dens$x) * dx
 y.mean <- dens$y[length(dens$x[dens$x < x.mean])]
 x.mode <- dens$x[i.mode <- which.max(dens$y)]
-y.mode <- dens$y[i.mode]
-y.cs <- cumsum(dens$y)
-x.med <- dens$x[i.med <- length(y.cs[2*y.cs <= y.cs[n]])]
-y.med <- dens$y[i.med]
+y.mode <- dens$y[i.mode]                  
+y.cs <- cumsum(dens$y)                    
+x.med <- dens$x[i.med <- length(y.cs[2*y.cs <= y.cs[n]])] 
+y.med <- dens$y[i.med]                                    
 #
 # Plotting the density and the statistics.
-plot(dens, type="l", col="black",lwd=0.1,xlim=c(0,25),cex=1.5,cex.lab=1.3, cex.axis=1.3,
+plot(dens, type="l", col="black",lwd=0.1,xlim=c(0,50),cex=1.5,cex.lab=1.3, cex.axis=1.3,
      xlab="The doubling time of hTERT-immortalized RPE cells (h)")
 polygon(dens, col="black")
-temp <- mapply(function(x,y,c) lines(c(x,x), c(0,y), lwd=2, col=c,las=1),
+temp <- mapply(function(x,y,c) lines(c(x,x), c(0,y), lwd=2, col=c,las=1), 
                c(x.mean, x.med, x.mode), c(y.mean, y.med, y.mode), c("orange", "Green", "Red"))
-legend(14, 0.24, c("Doubling Time Density", "Mode", "Median", "Mean"), col = c("black","Red","green", "orange"),
+legend(28.5, 0.115, c("Doubling Time Density", "Mode", "Median", "Mean"), col = c("black","Red","green", "orange"),
        text.col = "black", lty = 1,lwd=2,cex = 1, merge = TRUE)
+
+cat("The mode doubling time is ",x.mode,"\n" )
 
 ###############  Characterizing the trajectory movement of a population of Dividing Daughter BT549 cells
 
@@ -89,9 +84,13 @@ data_summary <- function(x) {                      ######  Add mean and standard
    ymax <- m+sd(x)
    return(c(y=m,ymin=ymin,ymax=ymax))
 }
-p <- ggplot(Da, aes(x=Group, y=Directionality)) +
+p <- ggplot(Da, aes(x=Group, y=Directionality)) + 
     geom_violin(trim=FALSE,fill="lightgreen")+ geom_point(size=2.5,color="black")
 p + stat_summary(fun.data=data_summary, geom="pointrange", color="red",size = 1)
+
+summary(Directionality)
+sd(Directionality)
+
 
 ####### Speed
 Average_Speed=df[,11]*60
@@ -103,10 +102,13 @@ data_summary <- function(x) {
    ymax <- m+sd(x)
    return(c(y=m,ymin=ymin,ymax=ymax))
 }
-p <- ggplot(Da, aes(x=Group, y=Average_Speed)) +
+p <- ggplot(Da, aes(x=Group, y=Average_Speed)) + 
     geom_violin(trim=FALSE,fill="yellow")+ geom_point(size=2.5,color="black")
-p + stat_summary(fun.data=data_summary,
+p + stat_summary(fun.data=data_summary, 
                  geom="pointrange", color="red",size = 1)
+
+summary(Average_Speed)
+sd(Average_Speed)
 
 
 ####################################  Correlation Analysis
@@ -115,15 +117,15 @@ p + stat_summary(fun.data=data_summary,
 DT=df[,9]/60    # doubling time
 f=df[,7]        # Total Distance
 ff<-as.numeric(gsub(",", ".", f))
-plot(DT,f,xlab="Doubling time (h)",ylab="Total Distance (um)",pch=16,las=0,cex=1.5,cex.lab=1.3, cex.axis=1.3)
+plot(DT,f,xlab="Doubling time (h)",ylab="Total Distance (um)",pch=16,las=0,cex=1.5,cex.lab=1.3, cex.axis=1.3,xlim=c(0,45),ylim=c(0,500))
 c<-cor.test( ~ DT+ ff, method = "pearson",exact=FALSE)
-c
+c 
 reg<-lm(ff~DT)
 cc<-unlist(c[4])
 ccPV<-round(cc, digits = 2)
-abline(reg,untf=T,col="red",lwd=2)
-text(18, 1875, "r= 0.62",cex = 1.5)
-text(19, 1750, "P< 0.001",cex = 1.5)
+abline(reg,untf=T,col="red",lwd=2) 
+text(4, 500, "r= 0.8",cex = 1.5)
+text(5.7, 460, "P< 0.001",cex = 1.5)
 
 
 
@@ -131,29 +133,29 @@ text(19, 1750, "P< 0.001",cex = 1.5)
 DT=df[,9]/60    # doubling time
 f=df[,10]       # Directionality
 plot(DT,f,xlab="Doubling time (h)",ylab="Directionality",pch=16,las=1,ylim=c(0,.65))
-c<-cor.test( ~ DT+ f, method = "pearson",exact=FALSE)
+c<-cor.test( ~ DT+ f, method = "pearson",exact=FALSE) 
 c
 reg<-lm(f~DT)
 cc<-unlist(c[4])
 ccPV<-round(cc, digits = 2)
-abline(reg,untf=T,col="red",lwd=2)
-text(19, 0.65, "r= -0.14",cex = 1)
-text(19.4, 0.6, "P= 0.057",cex = 1)
+abline(reg,untf=T,col="red",lwd=2) 
+text(19, 0.65, "r= -0.27",cex = 1)
+text(19.4, 0.6, "P= 0.059",cex = 1)
 
 
 
 ############### Finding the correlation between doubling time and Average Speed
 DT=df[,9]/60    # doubling time
 f=df[,11]*60    # Average Speed
-plot(DT,f,xlab="Doubling time (h)",ylab="Average Speed (um/h)",pch=16,las=1,ylim=c(10,60))
-c<-cor.test( ~ DT+ f, method = "pearson",exact=FALSE)
+plot(DT,f,xlab="Doubling time (h)",ylab="Average Speed (um/h)",pch=16,las=1,ylim=c(0,20))
+c<-cor.test( ~ DT+ f, method = "pearson",exact=FALSE) 
 c
 reg<-lm(f~DT)
 cc<-unlist(c[4])
 ccPV<-round(cc, digits = 2)
-abline(reg,untf=T,col="red",lwd=2)
-text(40.1, 60, "r= -0.12",cex = 1)
-text(40, 57, "P= 0.1",cex = 1)
+abline(reg,untf=T,col="red",lwd=2) 
+text(15, 20, "r= 0.08",cex = 1)
+text(15.25, 19, "P= 0.57",cex = 1)
 #####################################################################################################
 
 
@@ -161,11 +163,11 @@ text(40, 57, "P= 0.1",cex = 1)
 
 
 ###########################################################################################################
-################### Section # 2: Plotting the lineage tree
+################### Section # 2: Plotting the lineage tree 
 ###########################################################################################################
 
 
-#################### Loading the data
+#################### Loading the data 
 df<- read.table(file.choose(),sep=",",header=T)    ####### (PIP-FUCCI All Cells_Results.csv)
 head(df)
 dim(df)
@@ -230,7 +232,7 @@ for (j in 1: length(DFF)){
 	test.layout[,1]<-test.layout[,1] * 2
 	test.layout[,2]<- test.layout[,2] *3.5
 
-	pdf(paste0(j,".plot.pdf"))
+	pdf(paste0(j,".plot.pdf")) 
 	par(mar=c(0,0,0,0)+.1)
 	plot(g,layout=test.layout,edge.arrow.size=0.64,edge.arrow.width = 2,edge.width=3.5,vertex.shape="circle",vertex.size=22,edge.color="black",
 	vertex.color=adjustcolor(COLOR, alpha.f = .999),vertex.label.cex=0.65,vertex.label.font=2,vertex.label.color="black")
@@ -325,8 +327,8 @@ for (i in 1:length(df[,1])){
 	if (L==3){third=c(third,L)}
 	if (L==4){fourth=c(fourth,L)}
 }
-generations=c(length(third),length(second),length(first),length(mothers))
-barplot(generations,horiz=T,col=c("bisque1","bisque2","bisque3","bisque4"),xlab="Number of cells",xlim=c(0,100))
+generations=c(length(fourth),length(third),length(second),length(first),length(mothers))
+barplot(generations,horiz=T,col=c("bisque1","bisque2","bisque3","bisque4", "antiquewhite4"),xlab="Number of cells",xlim=c(0,100))
 box()
 #####################################################################################################
 
@@ -346,16 +348,38 @@ dcells<- read.table(file.choose(),sep=",",header=T)     # PIP-FUCCI Daughter Cel
 dim(dcells)
 head(dcells)
 
+##### twining the daughter cells in df1
+implode <- function(..., sep='') {
+     paste(..., collapse=sep)
+}
+newDF1<-data.frame()
+for (i in 1: length(dcells[,1])){
+	w<-strsplit(dcells[i,3], "")
+	ww<-w[[1]][length(w[[1]])]
+	ww<-as.numeric(w[[1]][length(w[[1]])])
+	if (ww==1){
+		w[[1]][length(w[[1]])]<-2
+		se<-implode(w[[1]])
+		wh<-which(dcells[,3]==paste0(se))
+		if (length(wh)>0){
+			newDF1<-rbind(newDF1,dcells[i,],dcells[wh,])
+		}
+	}
+}
+
+dcells<-newDF1
+head(dcells)
+
 firstDC<-c()                 ################## selecting first DCell
 num=c(1:length(dcells[,1]))
 for (k in num){
 	if(!(k %% 2) == 0) {
 		firstDC=c(firstDC,k)
-	}
+	} 
 }
 
-sdDiff=15                   #### no trajectory time difference larger than 1.3 hours between the two daughter cells
-minStep=36                  #### minimum trajectory time of 3 hours
+sdDiff=15                   #### no trajectory time difference larger than 2.5 hours between the two daughter cells
+minStep=36                  #### minimum trajectory time of 6 hours
 
 selectedrows=c()
 for (i in firstDC){
@@ -382,9 +406,7 @@ boxplot(diffDC[,10]*100, ylab="Directionality difference (%)",cex.lab=1.2, cex.a
 boxplot(diffDC[,7],ylab="Total Distance difference (um)",cex.lab=1.2, cex.axis=1.2,col="lightblue",ylim=c(0,100))
 boxplot(diffDC[,8], ylab="Displacement difference (um)",cex.lab=1.2, cex.axis=1.2,col="blue",ylim=c(0,100))
 
-
-
-########## Computing the Time Diffrence between divisions of RPE daughter cells
+########## Computing the Time Diffrence between divisions of RPE daughter cells 
 TimeDifferences=c()
 for (i in firstDC){
 	if (dcells[i,4]==TRUE & dcells[i+1,4]==TRUE){
@@ -403,7 +425,7 @@ getmode <- function(v) {
    uniqv[which.max(tabulate(match(v, uniqv)))]
 }
 result <- getmode(TimeDifferences)
-print(result)
+cat("The mode Time Differences till cell division between daughter cells is ",result/60,"\n" )
 
 ## Boxplot
 boxplot(TimeDifferences/60, ylab="Time difference between the division of daughter cells (h)",
@@ -418,10 +440,11 @@ data_summary <- function(x) {
    ymax <- m+sd(x)
    return(c(y=m,ymin=ymin,ymax=ymax))
 }
-p <- ggplot(Da, aes(x=Group, y=TD)) +
+p <- ggplot(Da, aes(x=Group, y=TD)) + 
     geom_violin(trim=FALSE,fill="gray")+ geom_point(size=2.5,color="black")
 p + stat_summary(fun.data=data_summary,geom="pointrange", color="red",size = 1)
 ###################################################################################################
+
 
 
 
@@ -482,7 +505,7 @@ std1<-c(sdG1,sdS,sdG2)
 pp<-barplot(yy,ylim=c(0,100),xlab="Cell cycle phases",ylab="Phase average length (%)",las=1,names.arg=c("G1","S","G2"),col = c("khaki2","khaki3","khaki4"))
 segments(pp,yy-std1,pp,yy+std1)
 segments(pp-0.1,yy-std1,pp+0.1,yy-std1)
-segments(pp-0.1,yy+std1,pp+0.1,yy+std1)
+segments(pp-0.1,yy+std1,pp+0.1,yy+std1) 
 box()
 
 
@@ -498,8 +521,8 @@ pairwise.wilcox.test(y, Group, p.adj="none", exact=FALSE)
 
 
 ############################ Computing for each step the distance and Instantaneous Speed
-
-TimeInterval=5
+ 
+TimeInterval=10                                             
 for (p in 1: length(SP1)){
     for (v in 1: 3){
 	    M<- SP1[[p]][[v]]
@@ -544,19 +567,19 @@ sd(speedG2)
 x1<-speedG1
 x2<-speedS
 x3<-speedG2
-###  Violin Plot
-plot(1, 1, xlim = c(0, 4), ylim = c(0, 60), type = 'n', xlab = 'Cell Cycle Phases', ylab = '', xaxt = 'n',las=1)
+###  Violin Plot                                           
+plot(1, 1, xlim = c(0, 4), ylim = c(0, 30), type = 'n', xlab = 'Cell Cycle Phases', ylab = '', xaxt = 'n',las=1)
 vioplot(x1, at = 1, add = T, col = "khaki2")
 vioplot(x2, at = 2, add = T, col = "khaki3")
 vioplot(x3, at = 3, add = T, col = "khaki4")
 axis(1, at = c(1,2,3), labels = c('G1',"S","G2"))
-axis(2, at =30, pos = -0.45, tck = 0, labels = 'Average Instantaneous Speeds (um/h)')
+axis(2, at =15, pos = -0.45, tck = 0, labels = 'Average Instantaneous Speeds (um/h)')
 
-###  BoxPlot
+###  BoxPlot                                            
 speed<-c(speedG1,speedS,speedG2)
 phases<-factor(c(rep("G1",43),rep("S",43),rep("G2",43)),levels=c("G1", "S",  "G2"))
 myDF<-data.frame(speed,phases)
-boxplot(speed~phases, data=myDF,las=1, col=c("khaki2","khaki3","khaki4"),
+boxplot(speed~phases, data=myDF,las=1, col=c("khaki2","khaki3","khaki4"), 
 ylab="Average Instantaneous Speeds (um/h)",xlab="Cell Cycle Phases")
 
 ### Barplot
@@ -568,10 +591,10 @@ msG2<- mean(speedG2)
 sdG2<-sd(speedG2)
 yy<-c(msG1,msS,msG2)
 std1<-c(sdG1,sdS,sdG2)
-pp<-barplot(yy,ylim=c(0,50),xlab="Cell cycle phases",ylab="Average Instantaneous Speeds (um/h)",las=1,names.arg=c("G1","S","G2"),col = c("khaki2","khaki3","khaki4"))
+pp<-barplot(yy,ylim=c(0,30),xlab="Cell cycle phases",ylab="Average Instantaneous Speeds (um/h)",las=1,names.arg=c("G1","S","G2"),col = c("khaki2","khaki3","khaki4"))
 segments(pp,yy-std1,pp,yy+std1)
 segments(pp-0.1,yy-std1,pp+0.1,yy-std1)
-segments(pp-0.1,yy+std1,pp+0.1,yy+std1)
+segments(pp-0.1,yy+std1,pp+0.1,yy+std1) 
 box()
 
 ###### Pairwise comparisons using Wilcoxon rank sum test with continuity correction
@@ -597,17 +620,17 @@ displacementS<-c()
 for (p in 1: length(SP1)){
 	sG1<-sum(SP1[[p]][[1]][,12])
 	disG1<-c(disG1,sG1)
-	dG1<-sqrt((SP1[[p]][[1]][length(SP1[[p]][[1]][,1]),4]-SP1[[p]][[1]][1,4])^2 + (SP1[[p]][[1]][length(SP1[[p]][[1]][,1]),5]-SP1[[p]][[1]][1,5])^2)
-
+	dG1<-sqrt((SP1[[p]][[1]][length(SP1[[p]][[1]][,1]),4]-SP1[[p]][[1]][1,4])^2 + (SP1[[p]][[1]][length(SP1[[p]][[1]][,1]),5]-SP1[[p]][[1]][1,5])^2) 
+ 
 	displacementG1<-c(displacementG1,dG1)
 	sG2<-sum(SP1[[p]][[2]][,12])
 	disG2<-c(disG2,sG2)
-	dG2<-sqrt((SP1[[p]][[2]][length(SP1[[p]][[2]][,1]),4]-SP1[[p]][[2]][1,4])^2 + (SP1[[p]][[2]][length(SP1[[p]][[2]][,1]),5]-SP1[[p]][[2]][1,5])^2)
+	dG2<-sqrt((SP1[[p]][[2]][length(SP1[[p]][[2]][,1]),4]-SP1[[p]][[2]][1,4])^2 + (SP1[[p]][[2]][length(SP1[[p]][[2]][,1]),5]-SP1[[p]][[2]][1,5])^2)  
 	displacementG2<-c(displacementG2,dG2)
-
+	
 	sS<-sum(SP1[[p]][[3]][,12])
 	disS<-c(disS,sS)
-	dS<-sqrt((SP1[[p]][[3]][length(SP1[[p]][[3]][,1]),4]-SP1[[p]][[3]][1,4])^2 + (SP1[[p]][[3]][length(SP1[[p]][[3]][,1]),5]-SP1[[p]][[3]][1,5])^2)
+	dS<-sqrt((SP1[[p]][[3]][length(SP1[[p]][[3]][,1]),4]-SP1[[p]][[3]][1,4])^2 + (SP1[[p]][[3]][length(SP1[[p]][[3]][,1]),5]-SP1[[p]][[3]][1,5])^2) 
 	displacementS<-c(displacementS,dS)
 }
 
@@ -623,7 +646,7 @@ sd(DRg2)
 
 
 ############# Plotting directionality
-### Boxplot
+### Boxplot 
 DIS<-c(DRg1,DRs,DRg2)
 phases<-factor(c(rep("G1",43),rep("S",43),rep("G2",43)),levels=c("G1", "S",  "G2"))
 myDF<-data.frame(DIS,phases)
@@ -642,7 +665,7 @@ std1<-c(sdG1,sdS,sdG2)
 pp<-barplot(yy,ylim=c(0,0.6),xlab="Cell cycle phases",ylab="Directionality",las=1,names.arg=c("G1","S","G2"),col = c("khaki2","khaki3","khaki4"))
 segments(pp,yy-std1,pp,yy+std1)
 segments(pp-0.1,yy-std1,pp+0.1,yy-std1)
-segments(pp-0.1,yy+std1,pp+0.1,yy+std1)
+segments(pp-0.1,yy+std1,pp+0.1,yy+std1) 
 box()
 
 ##### Pairwise comparisons using Wilcoxon rank sum test with continuity correction
@@ -662,7 +685,7 @@ pairwise.wilcox.test(y, Group, p.adj="none", exact=FALSE)
 ###################################### Speed Profiling  ##########################
 
 SP2<-split(Cells, Cells[,2])               ####### splitting each cell based on phases
-TimeInterval=5
+TimeInterval=10                                             
 for (p in 1: length(SP2)){
 	    M<- SP2[[p]]
 	    MM<-length(M[,1])
@@ -689,30 +712,26 @@ length(time)
 i=1
 x=c(1,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114,120,126,132,138,144)
 y=c(-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0)
-
-x=c(1,12,24,36,48,60,72,84,96,108,120,132,144)
-y=c(-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0)
-
 if (length(SP2[[i]][,13])<= 144){
 	missing<-144-length(SP2[[i]][,13])
 	P<-c(rep(NA,missing),SP2[[i]][,13])
 	length(P)
-	plot(time,P,type="l", lwd=3,col="orange",ylim=c(0,150),xaxt="n", xlab="Cell Division Time (h)",ylab="Speed (um/h)",las=1)
+	plot(time,P,type="l", lwd=3,col="orange",ylim=c(0,75),xaxt="n", xlab="Cell Division Time (h)",ylab="Speed (um/h)",las=1)
 	axis(1, at=x,labels=y, col.axis="black", cex.axis=0.73,las=1)
 }else{
 	extra=144-length(SP2[[i]][,13])
 	P=SP2[[i]][(1+abs(extra)):length(SP2[[i]][,13]),13]
-	plot(time,P,type="l", lwd=3,col="red",ylim=c(0,150),xaxt="n", xlab="Cell Division Time (h)",ylab="Speed (um/h)",las=1)
+	plot(time,P,type="l", lwd=3,col="red",ylim=c(0,75),xaxt="n", xlab="Cell Division Time (h)",ylab="Speed (um/h)",las=1)
 	axis(1, at=x,labels=y, col.axis="black", las=1)
 }
 
 ############ An example of a cell without a jump
-i=35
+i=35                                          
 missing<-144-length(SP2[[i]][,13])
 P<-c(rep(NA,missing),SP2[[i]][,13])
 lines(time,P,lwd=2.2,col="blue")
 add_legend <- function(...) {
-  opar <- par(fig=c(0, 1, 0, 1), oma=c(0, 0, 0, 0),
+  opar <- par(fig=c(0, 1, 0, 1), oma=c(0, 0, 0, 0), 
     mar=c(0, 0, 0, 0), new=TRUE)
   on.exit(par(opar))
   plot(0, 0, type='n', bty='n', xaxt='n', yaxt='n')
@@ -729,7 +748,7 @@ add_legend("top", legend=c("Cell ID: C8.2  [A cell without a terminal speed jump
 ############################  JUMP   ######################
 ###########################################################
 SP2<-split(Cells, Cells[,2])               ####### splitting each cell based on phases
-TimeInterval=5
+TimeInterval=10                                             
 for (p in 1: length(SP2)){
 	    M<- SP2[[p]]
 	    MM<-length(M[,1])
@@ -798,21 +817,19 @@ x= time
 y=jumpDF[length(jump)+1,]
 dy=jumpDF[length(jump)+2,]
 Time=x
-p<-graphics::plot(Time,y, type="l",col="red",xaxt="n",xlab="Cell Division Time (h)",ylab="Speed (um/h)",lwd=1,las=1,ylim=c(0,220))
+p<-graphics::plot(Time,y, type="l",col="red",xaxt="n",xlab="Cell Division Time (h)",ylab="Speed (um/h)",lwd=1,las=1,ylim=c(0,120)) 
  graphics::polygon(c(Time, rev(Time)), c(y+dy, rev(y-dy)),col = "gray" , border = NA)
-
   graphics::lines(Time,y+dy, col="black")
   graphics::lines(Time,y-dy, col="black")
   graphics::lines(Time,y, type="l",col="red",lwd=3)
-#abline(v=c(24,48,72,96,120), col="black")
-xx=c(1,12,24,36,48,60,72,84,96,108,120,132,144)
-yy=c(-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0)
+xx=c(1,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114,120,126,132,138,144)
+yy=c(-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0)
 axis(1, at=xx,labels=yy, col.axis="black", las=1,cex.axis=0.73)
 
 
 ############################ Plotting tbe mean speed across the cell cycle phases for cells without a jump
 SP2<-split(Cells, Cells[,2])               ####### splitting each cell based on phases
-TimeInterval=5
+TimeInterval=10                                             
 for (p in 1: length(SP2)){
 	    M<- SP2[[p]]
 	    MM<-length(M[,1])
@@ -859,15 +876,14 @@ x= time
 y=NOTjumpDF[length(noJump)+1,]
 dy=NOTjumpDF[length(noJump)+2,]
 Time=x
-
 p<-graphics::plot(Time,y, type="l",col="red",xaxt="n",xlab="Cell Division Time (h)",
-ylab="Speed (um/h)",lwd=1,las=1,ylim=c(0,220))
+ylab="Speed (um/h)",lwd=1,las=1,ylim=c(0,120)) 
 graphics::polygon(c(Time, rev(Time)), c(y+dy, rev(y-dy)),col = "gray" , border = NA)
 graphics::lines(Time,y+dy, col="black")
 graphics::lines(Time,y-dy, col="black")
 graphics::lines(Time,y, type="l",col="red",lwd=3)
-xx=c(1,12,24,36,48,60,72,84,96,108,120,132,144)
-yy=c(-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0)
+xx=c(1,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114,120,126,132,138,144)
+yy=c(-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0)
 axis(1, at=xx,labels=yy, col.axis="black", las=1,cex.axis=0.73)
 
 
