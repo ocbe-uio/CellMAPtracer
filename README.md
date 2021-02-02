@@ -27,6 +27,9 @@ The CellMAPtracer FUCCI plug-in enables users to profile the fluorescent signals
 
 ### A list of suggested online visualization tools 
 https://huygens.science.uva.nl/PlotsOfData
+
 https://goodcalculators.com/box-plot-maker
+
 https://chart-studio.plotly.com/create/box-plot/#/
+
 http://www.alcula.com/calculators/statistics/box-plot
