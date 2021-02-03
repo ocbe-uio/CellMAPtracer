@@ -23,3 +23,13 @@ CellMAPtracer is capable of loading multi-TIFF stacks (8 and 16 bits) of spatio-
 
 ### CellMAPtracer FUCCI plug-in
 The CellMAPtracer FUCCI plug-in enables users to profile the fluorescent signals of FUCCI‐expressing cells in 2-3 channel systems. It detects the cell cycle phase at any given time point throughout the course of the tracking. The input of the FUCCI plug-in is a multi-TIFF stack in RGB format of spatio-temporal live cell images which should be associated with the outcome of the tracking outcome of CellMAPtracer for the corresponding multi-TIFF stacks (8 and 16 bits). After loading the needed files and selecting the cell cycle detection method, the FUCCI phase algorithm automatically implements an internal RGB normalization. Users can inspect the normalized and the raw signals and monitor the detection of the cell cycle phases with a possibility of correcting the detection. 
+
+
+### A list of suggested online visualization tools 
+https://huygens.science.uva.nl/PlotsOfData
+
+https://goodcalculators.com/box-plot-maker
+
+https://chart-studio.plotly.com/create/box-plot/#/
+
+http://www.alcula.com/calculators/statistics/box-plot
