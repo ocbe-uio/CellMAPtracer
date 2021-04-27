@@ -33,3 +33,7 @@ https://goodcalculators.com/box-plot-maker
 https://chart-studio.plotly.com/create/box-plot/#/
 
 http://www.alcula.com/calculators/statistics/box-plot
+
+## The CellMAPtracer paper
+
+Ghannoum S, Antos K, Leoncio Netto W, Gomes C, Köhn-Luque A, Farhan H. CellMAPtracer: A User-Friendly Tracking Tool for Long-Term Migratory and Proliferating Cells Associated with FUCCI Systems. Cells. 2021; 10(2):469. https://doi.org/10.3390/cells10020469
